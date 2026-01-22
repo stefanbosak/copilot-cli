@@ -9,11 +9,21 @@ on:
   schedule:
     - cron: "45 23 * * *"
   workflow_dispatch:
+   inputs:
+      DOCKER_GUID:
+        description: 'DOCKER_GID (number)'
+        required: false
+        type: string
+      CONTAINER_TAG:
+        description: 'CONTAINER_TAG (text)'
+        required: false
+        type: string
 
 env:
   GH_REGISTRY: ghcr.io
   DH_REGISTRY: docker.io
   CONTAINER_TAG: initial
+  DOCKER_GID: 119
 
 jobs:
   docker-build-test-tag-push:
@@ -27,6 +37,19 @@ jobs:
     steps:
       - name: 'Checkout'
         uses: actions/checkout@main
+      - name: 'Set parameters to GITHUB_ENV'
+        shell: bash
+        run: |
+          if [[ "${{ github.event_name }}" == "workflow_dispatch" ]]; then
+            if [[ "${{ github.event.inputs.DOCKER_GID }}" != "" ]]; then
+              echo "DOCKER_GID=${{ github.event.inputs.DOCKER_GID }}" >> ${GITHUB_ENV}
+            fi
+            if [[ "${{ github.event.inputs.CONTAINER_TAG }}" != "" ]]; then
+              echo "CONTAINER_TAG=${{ github.event.inputs.CONTAINER_TAG }}" >> ${GITHUB_ENV}
+            fi
+          fi
+          echo "GITHUB_ENV:"
+          cat ${GITHUB_ENV}
       - name: 'Set up QEMU (arm64)'
         uses: docker/setup-qemu-action@master
         with:
@@ -68,7 +91,7 @@ jobs:
           context: .
           file: ./Dockerfile
           build-args: |
-            DOCKER_GID=119
+            DOCKER_GID=${{ env.DOCKER_GID }}
           push: true
           provenance: false
           no-cache: false
