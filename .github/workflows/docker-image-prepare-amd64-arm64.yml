@@ -77,14 +77,14 @@ jobs:
           password: ${{ secrets.DH_TOKEN }}
           ecr: false
           logout: true
-#      - name: 'Clean old containers'
-#        uses: actions/delete-package-versions@main
-#        with:
-#          owner: ${{ github.repository_owner }}
-#          package-name: ${{ github.event.repository.name }}
-#          package-type: 'container'
-#          token: ${{ secrets.GH_TOKEN }}
-#          min-versions-to-keep: 3
+      - name: 'Clean old containers'
+        uses: actions/delete-package-versions@main
+        with:
+          owner: ${{ github.repository_owner }}
+          package-name: ${{ github.event.repository.name }}
+          package-type: 'container'
+          token: ${{ secrets.GH_TOKEN }}
+          min-versions-to-keep: 3
       - name: 'Build, tag and push multi-platforms Docker images to preconfigured container registries'
         uses: docker/build-push-action@master
         with:
