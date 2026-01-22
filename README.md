@@ -1,91 +1,153 @@
-# GitHub Copilot CLI
+<div align="center">
 
-This repository contains [GitHub Copilot CLI](https://github.com/github/copilot-cli) tooling covered as sandboxed Docker container.
-Docker based [MCP servers](https://mcpservers.org/) are supported via Docker in Docker approach.
+# 🤖 GitHub Copilot CLI
 
-- [documentation](https://docs.github.com/en/copilot/concepts/agents/about-copilot-cli)
-- [supported models](https://docs.github.com/en/copilot/reference/ai-models/supported-models#model-retirement-history)
+**Sandboxed Docker Container for GitHub Copilot CLI with MCP Support**
 
+![Build Status](https://github.com/stefanbosak/copilot-cli/actions/workflows/docker-image-prepare-amd64-arm64.yml/badge.svg)
+[![GitHub](https://img.shields.io/badge/GitHub-Repository-blue?logo=github)](https://github.com/github/copilot-cli)
+[![Documentation](https://img.shields.io/badge/Docs-GitHub-green?logo=github)](https://docs.github.com/en/copilot/concepts/agents/about-copilot-cli)
+[![MCP](https://img.shields.io/badge/MCP-Servers-orange)](https://mcpservers.org/)
+
+</div>
+
+---
+
+## 📋 Overview
+
+This repository provides a fully <span style="color: #0969da;">**containerized**</span> [GitHub Copilot CLI](https://github.com/github/copilot-cli) environment with integrated <span style="color: #8250df;">**MCP server**</span> support using <span style="color: #1a7f37;">**Docker-in-Docker**</span> architecture.
+
+### 📚 Resources
+
+- 📖 [Official Documentation](https://docs.github.com/en/copilot/concepts/agents/about-copilot-cli)
+- 🤖 [Supported AI Models](https://docs.github.com/en/copilot/reference/ai-models/supported-models#model-retirement-history)
+  - **Recommended**:
+    - <span style="color: #8250df;">**Claude Sonet-4.5**</span> - [Documentation](https://www.anthropic.com/claude/sonnet)
+    - <span style="color: #a371f7;">**Claude Opus-4.5**</span> - [Documentation](https://www.anthropic.com/claude/opus)
+
+### ⚠️ Important Notices
 
 > [!NOTE]
-> Every file would be reasonable well commented and relevant details can be found there.
+> All files in this repository are well-commented with relevant implementation details.
 
 > [!IMPORTANT]
-> Check details before taking any action.
+> Always review and understand the code before executing any commands.
 
 > [!CAUTION]
-> User is responsible for any modification and execution of any parts from this repository.
+> Users are solely responsible for any modifications or execution of code from this repository.
 
 
-## MCP servers
+## 🔌 MCP Servers
 
-- **postgres** - PostgreSQL database integration via toolbox utility
-  - Type: local
-  - Command: `/usr/local/bin/toolbox --prebuilt postgres --stdio`
-  - Environment variables: POSTGRES_HOST, POSTGRES_PORT, POSTGRES_DATABASE, POSTGRES_USER, POSTGRES_PASSWORD
-  - [MCP Toolbox for Databases](https://github.com/googleapis/genai-toolbox)
-  - Note: linux/arm64 is not currently not covered by official toolbox releases (due to this: toolbox is not part of ARM64 container image)
+### <span style="color: #0969da;">🗄️ Database & Storage</span>
 
-- **sequentialthinking** - Step-by-step reasoning and problem-solving
-  - Type: local
-  - Command: `/usr/local/bin/mcp-server-sequential-thinking`
-  - Note: might reduce AI model tokens consumption ~5 - 55 %
-  - [Sequential Thinking MCP Server](https://github.com/modelcontextprotocol/servers/tree/main/src/sequentialthinking)
+#### **postgres** - <span style="color: #0969da;">PostgreSQL Integration</span>
+- **Type:** <span style="color: #1a7f37;">Local</span>
+- **Command:** `/usr/local/bin/toolbox --prebuilt postgres --stdio`
+- **Environment:**
+  - `POSTGRES_HOST`
+  - `POSTGRES_PORT`
+  - `POSTGRES_DATABASE`
+  - `POSTGRES_USER`
+  - `POSTGRES_PASSWORD`
+- **Documentation:** [MCP Toolbox for Databases](https://github.com/googleapis/genai-toolbox)
+- ⚠️ **Note:** <span style="color: #d73a49;">ARM64 architecture not currently supported</span>
 
-- **ref** - Documentation search and reference
-  - Type: http
-  - URL: `https://api.ref.tools/mcp`
-  - Requires: REF_API_KEY
-  - Note: Similar to context7 but more efficient, this MCP is crucial
-  - [Ref.tools - Context for your agent](https://ref.tools/)
+---
 
-- **fetch** - Web fetching capabilities
-  - Type: local (Docker)
-  - Command: `docker run --rm -i --network=host mcp/fetch`
-  - [Fetch MCP Server](https://github.com/modelcontextprotocol/servers/tree/main/src/fetch)
+### <span style="color: #8250df;">🧠 AI & Reasoning</span>
 
-- **time** - Time and timezone conversions
-  - Type: local (Docker)
-  - Command: `docker run --rm -i --network=host -e LOCAL_TIMEZONE mcp/time`
-  - [Time MCP Server](https://github.com/modelcontextprotocol/servers/tree/main/src/time)
+#### **sequentialthinking** - <span style="color: #8250df;">Step-by-Step Reasoning</span>
+- **Type:** <span style="color: #1a7f37;">Local</span>
+- **Command:** `/usr/local/bin/mcp-server-sequential-thinking`
+- **Benefits:** <span style="color: #1a7f37;">Reduces token consumption by 5-55%</span>
+- **Documentation:** [Sequential Thinking MCP Server](https://github.com/modelcontextprotocol/servers/tree/main/src/sequentialthinking)
 
-- **grafana-tst** - Grafana monitoring (test environment)
-  - Type: sse
-  - URL (example): `https://grafana-mcp.tst.domain.tld/sse`
-  - [Grafana MCP server](https://github.com/grafana/mcp-grafana)
+#### **ref** - <span style="color: #8250df;">Documentation Search</span>
+- **Type:** <span style="color: #0969da;">HTTP</span>
+- **URL:** `https://api.ref.tools/mcp`
+- **Authentication:** <span style="color: #d73a49;">Requires `REF_API_KEY`</span>
+- **Benefits:** <span style="color: #1a7f37;">Essential for efficient context retrieval</span>
+- **Documentation:** [Ref.tools](https://ref.tools/)
 
-- **grafana-prd** - Grafana monitoring (production environment)
-  - Type: sse
-  - URL (example): `https://grafana-mcp.prd.domain.tld/sse`
-  - [Grafana MCP server](https://github.com/grafana/mcp-grafana)
+---
 
-- **graylog-tst** - Graylog logging (test environment)
-  - Type: http
-  - URL (example): `https://graylog.tst.domain.tld/api/mcp`
-  - Requires: Authorization header
-  - [Graylog MCP scope ducumentsion](https://go2docs.graylog.org/current/setting_up_graylog/model_context_protocol__mcp__tools.htm)
+### <span style="color: #1a7f37;">🌐 Utilities</span>
 
-- **graylog-prd** - Graylog logging (production environment)
-  - Type: http
-  - URL (example): `https://graylog.papayapos.sk/api/mcp`
-  - Requires: Authorization header
-  - [Graylog MCP scope ducumentsion](https://go2docs.graylog.org/current/setting_up_graylog/model_context_protocol__mcp__tools.htm)
+#### **fetch** - <span style="color: #1a7f37;">Web Fetching</span>
+- **Type:** <span style="color: #1a7f37;">Local (Docker)</span>
+- **Command:** `docker run --rm -i --network=host mcp/fetch`
+- **Documentation:** [Fetch MCP Server](https://github.com/modelcontextprotocol/servers/tree/main/src/fetch)
+
+#### **time** - <span style="color: #1a7f37;">Time & Timezone</span>
+- **Type:** <span style="color: #1a7f37;">Local (Docker)</span>
+- **Command:** `docker run --rm -i --network=host -e LOCAL_TIMEZONE mcp/time`
+- **Documentation:** [Time MCP Server](https://github.com/modelcontextprotocol/servers/tree/main/src/time)
+
+---
+
+### <span style="color: #d73a49;">📊 Monitoring & Logging</span>
+
+#### **grafana-tst** - <span style="color: #d73a49;">Grafana</span> <span style="color: #8250df;">(Test)</span>
+- **Type:** <span style="color: #0969da;">SSE</span>
+- **URL:** `https://grafana-mcp.tst.domain.tld/sse`
+- **Documentation:** [Grafana MCP Server](https://github.com/grafana/mcp-grafana)
+
+#### **grafana-prd** - <span style="color: #d73a49;">Grafana</span> <span style="color: #1a7f37;">(Production)</span>
+- **Type:** <span style="color: #0969da;">SSE</span>
+- **URL:** `https://grafana-mcp.prd.domain.tld/sse`
+- **Documentation:** [Grafana MCP Server](https://github.com/grafana/mcp-grafana)
+
+#### **graylog-tst** - <span style="color: #d73a49;">Graylog</span> <span style="color: #8250df;">(Test)</span>
+- **Type:** <span style="color: #0969da;">HTTP</span>
+- **URL:** `https://graylog.tst.domain.tld/api/mcp`
+- **Authentication:** <span style="color: #d73a49;">Authorization header required</span>
+- **Documentation:** [Graylog MCP Documentation](https://go2docs.graylog.org/current/setting_up_graylog/model_context_protocol__mcp__tools.htm)
+
+#### **graylog-prd** - <span style="color: #d73a49;">Graylog</span> <span style="color: #1a7f37;">(Production)</span>
+- **Type:** <span style="color: #0969da;">HTTP</span>
+- **URL:** `https://graylog.papayapos.sk/api/mcp`
+- **Authentication:** <span style="color: #d73a49;">Authorization header required</span>
+- **Documentation:** [Graylog MCP Documentation](https://go2docs.graylog.org/current/setting_up_graylog/model_context_protocol__mcp__tools.htm)
 
 
-## Files
+## 📁 Repository Structure
 
-- [config.json](./copilot/config.json) - GitHub Copilot CLI configuration 
-- [.env](./copilot/.env) - GitHub Copilot CLI environment variables 
-- [copilot-instruction.md](./copilot/copilot-instruction.md) - basic instruction file for GitHub Copilot CLI
-- [mcp-config.json](./copilot/mcp-config.json) - configuration of MCP servers 
-- [Dockerfile](./Dockerfile) - Docker container configuration
-- [copilot-build.sh](./copilot-build.sh) - Copilot build script
-- [copilot.sh](./copilot.sh) - Copilot execution script
-- [deadsnakes.gpg](./deadsnakes.gpg) - GPG key for deadsnakes PPA
-- [deadsnakes.list](./deadsnakes.list) - APT source list for deadsnakes repository
+### <span style="color: #8250df;">Configuration Files</span>
+| File | Description |
+|------|-------------|
+| [`config.json`](./copilot/config.json) | <span style="color: #0969da;">GitHub Copilot CLI configuration</span> |
+| [`.env`](./copilot/.env) | <span style="color: #1a7f37;">Environment variables</span> |
+| [`copilot-instruction.md`](./copilot/copilot-instruction.md) | Basic instruction file |
+| [`mcp-config.json`](./copilot/mcp-config.json) | <span style="color: #8250df;">MCP servers configuration</span> |
+
+### <span style="color: #0969da;">Docker & Build</span>
+| File | Description |
+|------|-------------|
+| [`Dockerfile`](./Dockerfile) | <span style="color: #0969da;">Container image configuration</span> |
+| [`copilot-build.sh`](./copilot-build.sh) | <span style="color: #1a7f37;">Build automation script</span> |
+| [`copilot.sh`](./copilot.sh) | <span style="color: #1a7f37;">Execution wrapper script</span> |
+
+### <span style="color: #d73a49;">Dependencies</span>
+| File | Description |
+|------|-------------|
+| [`deadsnakes.gpg`](./deadsnakes.gpg) | GPG key for deadsnakes PPA |
+| [`deadsnakes.list`](./deadsnakes.list) | APT source list for Python repository |
 
 
-## Docker container image
+## 🐳 Container Images
 
-- [GitHubCR](https://github.com/stefanbosak/copilot-cli/pkgs/container/copilot-cli) (IPv4 only): `docker pull ghcr.io/stefanbosak/copilot-cli:initial`
-- [DockerHubCR](https://hub.docker.com/r/developmententity/copilot-cli) (IPv4 & IPv6): `docker pull developmententity/copilot-cli:initial`
+### <span style="color: #0969da;">Available Registries</span>
+
+| Registry | Network Support | Pull Command |
+|----------|----------------|--------------|
+| [**GitHub CR**](https://github.com/stefanbosak/copilot-cli/pkgs/container/copilot-cli) | <span style="color: #8250df;">IPv4 only</span> | `docker pull ghcr.io/stefanbosak/copilot-cli:initial` |
+| [**Docker Hub**](https://hub.docker.com/r/developmententity/copilot-cli) | <span style="color: #1a7f37;">IPv4 & IPv6</span> | `docker pull developmententity/copilot-cli:initial` |
+
+---
+
+<div align="center">
+
+<span style="color: #8250df;">**Made with ❤️ to improve efficiency**</span>
+
+</div>
