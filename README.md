@@ -118,7 +118,7 @@ This repository provides a fully <span style="color: #0969da;">**containerized**
 |------|-------------|
 | [`config.json`](./.copilot/config.json) | <span style="color: #0969da;">GitHub Copilot CLI configuration</span> |
 | [`.env`](./.copilot/.env) | <span style="color: #1a7f37;">Environment variables</span> |
-| [`copilot-instruction.md`](./.copilot/copilot-instruction.md) | Basic instruction file (available from 2025-Sep) |
+| [`copilot-instructions.md`](./.copilot/copilot-instructions.md) | Basic instruction file (available from 2025-Sep) |
 | [`skills`](./.copilot/skills) | Directory with skills (firstly available from 2025-Dec-19) |
 | [`mcp-config.json`](./.copilot/mcp-config.json) | <span style="color: #8250df;">MCP servers configuration</span> |
 
