@@ -4,7 +4,7 @@
 
 **Containerized GitHub Copilot CLI (Hardened)**
 
-![Build Status](https://github.com/stefanbosak/copilot-cli/actions/workflows/docker-image-prepare-amd64-arm64.yml/badge.svg)
+[![build_status_badge](../../actions/workflows/docker-image-prepare-amd64-arm64.yml/badge.svg?branch=main)](.github/workflows/docker-image-prepare-amd64-arm64.yml)
 [![GitHub](https://img.shields.io/badge/GitHub-Repository-blue?logo=github)](https://github.com/github/copilot-cli)
 [![Documentation](https://img.shields.io/badge/Docs-GitHub-green?logo=github)](https://docs.github.com/en/copilot/concepts/agents/about-copilot-cli)
 [![MCP](https://img.shields.io/badge/MCP-Servers-orange)](https://mcpservers.org/)
