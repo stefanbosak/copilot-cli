@@ -2,7 +2,7 @@
 
 # 🤖 GitHub Copilot CLI
 
-**Sandboxed Docker Container for GitHub Copilot CLI with MCP Support**
+**Containerized GitHub Copilot CLI (Hardened)**
 
 ![Build Status](https://github.com/stefanbosak/copilot-cli/actions/workflows/docker-image-prepare-amd64-arm64.yml/badge.svg)
 [![GitHub](https://img.shields.io/badge/GitHub-Repository-blue?logo=github)](https://github.com/github/copilot-cli)
@@ -149,6 +149,6 @@ This repository provides a fully <span style="color: #0969da;">**containerized**
 
 <div align="center">
 
-<span style="color: #8250df;">**Made with ❤️ to improve efficiency**</span>
+<span style="color: #8250df;">**Made with ❤️ for ⚡ efficiency and 🔒 security**</span>
 
 </div>
