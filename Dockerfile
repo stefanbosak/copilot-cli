@@ -8,7 +8,6 @@
 FROM dhi.io/node:24-debian13-dev
 
 # Build arguments
-ARG DOCKER_GID
 ARG TARGETARCH
 ARG TARGETOS
 
@@ -79,10 +78,9 @@ RUN if [ "${TARGETARCH}" = "amd64" ]; then \
   # (ARM64 requires ARM64 kernel from host, not available on AMD64 host)
   && curl -fsSL https://get.docker.com | sh \
   && if ! getent group docker > /dev/null 2>&1; then \
-       groupadd -g "${DOCKER_GID}" docker; \
+       groupadd -g 999 docker; \
      fi \
-  && usermod -aG docker "node" \
-  && groupmod -g "${DOCKER_GID}" docker
+  && usermod -aG docker "node"
 
 # Configure bash shell for subsequent RUN commands
 SHELL ["/usr/bin/bash", "-c"]

@@ -7,7 +7,12 @@
 # Docker container GitHub Copilot CLI wrapper
 #
 copilot() {
+  # extract Docker GID from the system
+  export DOCKER_GID=$(getent group docker | cut -d: -f3)
+
   docker run -it --rm \
+    # add obtained docker group from host into container
+    --group-add "${DOCKER_GID}" \
     # GitHub Copilot CLI environment variables
     --env-file "${HOME}/.copilot/.env" \
     # Docker in Docker socket mapping

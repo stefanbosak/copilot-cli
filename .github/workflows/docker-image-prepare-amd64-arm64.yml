@@ -10,10 +10,6 @@ on:
     - cron: "45 23 * * *"
   workflow_dispatch:
    inputs:
-      DOCKER_GUID:
-        description: 'DOCKER_GID (number)'
-        required: false
-        type: string
       CONTAINER_TAG:
         description: 'CONTAINER_TAG (text)'
         required: false
@@ -23,7 +19,6 @@ env:
   GH_REGISTRY: ghcr.io
   DH_REGISTRY: docker.io
   CONTAINER_TAG: initial
-  DOCKER_GID: 119
 
 jobs:
   docker-build-test-tag-push:
@@ -41,9 +36,6 @@ jobs:
         shell: bash
         run: |
           if [[ "${{ github.event_name }}" == "workflow_dispatch" ]]; then
-            if [[ "${{ github.event.inputs.DOCKER_GID }}" != "" ]]; then
-              echo "DOCKER_GID=${{ github.event.inputs.DOCKER_GID }}" >> ${GITHUB_ENV}
-            fi
             if [[ "${{ github.event.inputs.CONTAINER_TAG }}" != "" ]]; then
               echo "CONTAINER_TAG=${{ github.event.inputs.CONTAINER_TAG }}" >> ${GITHUB_ENV}
             fi
@@ -98,8 +90,6 @@ jobs:
         with:
           context: .
           file: ./Dockerfile
-          build-args: |
-            DOCKER_GID=${{ env.DOCKER_GID }}
           push: true
           provenance: false
           no-cache: false
