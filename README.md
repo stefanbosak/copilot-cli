@@ -128,6 +128,7 @@ This repository provides a fully <span style="color: #0969da;">**containerized**
 | [`Dockerfile`](./Dockerfile) | <span style="color: #0969da;">Container image configuration</span> |
 | [`copilot-build.sh`](./copilot-build.sh) | <span style="color: #1a7f37;">Build automation script</span> |
 | [`copilot.sh`](./copilot.sh) | <span style="color: #1a7f37;">Execution wrapper script</span> |
+| [`act.sh`](./act.sh) | <span style="color: #1a7f37;">Act tool script</span> |
 
 ### <span style="color: #d73a49;">Dependencies</span>
 | File | Description |
