@@ -114,13 +114,13 @@ This repository provides a fully <span style="color: #0969da;">**containerized**
 ## 📁 Repository Structure
 
 ### <span style="color: #8250df;">Configuration Files</span>
-| File | Description |
-|------|-------------|
-| [`config.json`](./.copilot/config.json) | <span style="color: #0969da;">GitHub Copilot CLI configuration</span> |
-| [`.env`](./.copilot/.env) | <span style="color: #1a7f37;">Environment variables</span> |
-| [`copilot-instructions.md`](./.copilot/copilot-instructions.md) | Basic instruction file (available from 2025-Sep) |
-| [`skills`](./.copilot/skills) | Directory with skills (available from 2025-Dec-19) |
-| [`mcp-config.json`](./.copilot/mcp-config.json) | <span style="color: #8250df;">MCP servers configuration</span> |
+| File | Description | Note |
+|------|-------------|------|
+| [`config.json`](./.copilot/config.json) | <span style="color: #0969da;">GitHub Copilot CLI configuration</span> | |
+| [`.env`](./.copilot/.env) | <span style="color: #1a7f37;">Environment variables</span> | |
+| [`copilot-instructions.md`](./.copilot/copilot-instructions.md) | Basic instruction file (available from 2025-Sep) | [docs](https://docs.github.com/en/copilot/how-tos/configure-custom-instructions/add-repository-instructions) |
+| [`skills`](./.copilot/skills) | Directory with skills (available from 2025-Dec-19) | [docs](https://docs.github.com/en/copilot/concepts/agents/about-agent-skills) |
+| [`mcp-config.json`](./.copilot/mcp-config.json) | <span style="color: #8250df;">MCP servers configuration</span> | |
 
 ### <span style="color: #0969da;">Docker & Build</span>
 | File | Description |
