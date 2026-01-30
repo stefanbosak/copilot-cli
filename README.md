@@ -133,7 +133,7 @@ This repository provides a fully <span style="color: #0969da;">**containerized**
 | **commands** | Slash commands for deterministic actions without natural language. | `/explain`` - Quick shell, AI tasks | [blog](https://github.blog/ai-and-ml/github-copilot/a-cheat-sheet-to-slash-commands-in-github-copilot-cli/) | |
 | **endgame** | Workflow orchestration for multi-step operations (agentic workflows). | Release prep, deployment verification, quality gates. | | |
 | **plugins** | MCP server integrations with `plugin.json`, agents, skills subdirs. | Linear tracking, PostgreSQL access, Slack notifications. `.copilot/plugins/{name}/` | [extensions](https://docs.github.com/en/copilot/how-tos/use-copilot-extensions) | [MS Dev Blog](https://developer.microsoft.com/blog/introducing-awesome-github-copilot-customizations-repo) |
-| **collections** | Bundle related resources with `.collection.md` and `includes` field. | Full-stack bundles, DevOps toolkits, testing suites. `.copilot/collections/{name}` | | [README.collections](https://github.com/github/awesome-copilot/blob/main/docs/README.collections.md) |
+| **collections** | Bundle related resources with `.collection.md` and `includes` field. | Full-stack bundles, DevOps toolkits, testing suites. `.copilot/collections/{name}` | [template](https://github.com/github/awesome-copilot/blob/main/collections/TEMPLATE.md) | [README.collections](https://github.com/github/awesome-copilot/blob/main/docs/README.collections.md) |
 
 ### <span style="color: #0969da;">Docker & Build</span>
 | File | Description |
