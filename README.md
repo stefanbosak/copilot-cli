@@ -20,6 +20,7 @@ This repository provides a fully <span style="color: #0969da;">**containerized**
 ### 📚 Resources
 
 - 📖 [Official Documentation](https://docs.github.com/en/copilot/concepts/agents/about-copilot-cli)
+- 📖 [AI models database](https://models.dev)
 - 🤖 [Supported AI Models](https://docs.github.com/en/copilot/reference/ai-models/supported-models#model-retirement-history)
   - **Recommended**:
     - <span style="color: #8250df;">**Claude Sonet-4.5**</span> - [Documentation](https://www.anthropic.com/claude/sonnet)
