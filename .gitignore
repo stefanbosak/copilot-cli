@@ -1,2 +1,9 @@
 *.swp
 screenlog.*
+.copilot/.env
+.copilot/config.json
+.copilot/mcp-config.json
+.copilot/command-history-state.json
+.copilot/pkg
+.copilot/logs
+.copilot/session-state
