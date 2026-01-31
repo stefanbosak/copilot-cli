@@ -16,6 +16,7 @@
 ## 📋 Overview
 
 This repository provides a fully <span style="color: #0969da;">**containerized**</span> [GitHub Copilot CLI](https://github.com/github/copilot-cli) environment with integrated <span style="color: #8250df;">**MCP server**</span> support using <span style="color: #1a7f37;">**Docker-in-Docker**</span> architecture.
+Main goal of selected approach is to isolate AI scope from the rest of environment (proactively reduce possible unwanted impact/consequences in general).
 
 ### 📚 Resources
 
@@ -37,6 +38,10 @@ This repository provides a fully <span style="color: #0969da;">**containerized**
 > [!CAUTION]
 > Users are solely responsible for any modifications or execution of code from this repository.
 
+## 🛠️ Utilities
+- [uv](https://github.com/astral-sh/uv)
+- [bun](https://github.com/oven-sh/bun)
+- [mdflow](https://github.com/johnlindquist/mdflow)
 
 ## 🔌 MCP Servers
 
@@ -127,7 +132,7 @@ This repository provides a fully <span style="color: #0969da;">**containerized**
 |-----------|---------|------------------|---------------|----------------------|
 | [`instructions`](./.copilot/instructions) | Context-aware guidelines with `applyTo` patterns and priority levels. | Coding standards, linting rules, team conventions. `.copilot/instructions/{name}.instructions.md` | [docs](https://docs.github.com/en/copilot/tutorials/customization-library/custom-instructions/your-first-custom-instructions) | [README.instructions](https://github.com/github/awesome-copilot/blob/main/docs/README.instructions.md) |
 | [`skills`](./.copilot/skills) | Reusable actions in `SKILL.md` (can use plugins). | DB migrations, code reviews, API tests, deployments. `.copilot/skills/{name}` | [docs](https://docs.github.com/en/copilot/concepts/agents/about-agent-skills) | [README.skills](https://github.com/github/awesome-copilot/blob/main/docs/README.skills.md), [VS Code](https://code.visualstudio.com/docs/copilot/customization/agent-skills) |
-| [`agents`](./.copilot/agents) | Specialized AI assistants with custom skills (markdown/JSON). | Code reviewer, docs writer, DevOps automation, security auditor. `.copilot/agents/` | [docs](https://docs.github.com/en/copilot/how-tos/use-copilot-agents/coding-agent/create-custom-agents) | [README.agents](https://github.com/github/awesome-copilot/blob/main/docs/README.agents.md), [Building agents](https://techcommunity.microsoft.com/blog/azuredevcommunityblog/building-agents-with-github-copilot-sdk-a-practical-guide-to-automated-tech-upda/4488948), [Writing agents](https://github.blog/ai-and-ml/github-copilot/how-to-write-a-great-agents-md-lessons-from-over-2500-repositories/) |
+| [`agents`](./.copilot/agents) | Specialized AI assistants with custom skills (markdown/JSON). | Code reviewer, docs writer, DevOps automation, security auditor. `.copilot/agents/` | [docs](https://docs.github.com/en/copilot/how-tos/use-copilot-agents/coding-agent/create-custom-agents) | [README.agents](https://github.com/github/awesome-copilot/blob/main/docs/README.agents.md), [Building agents](https://techcommunity.microsoft.com/blog/azuredevcommunityblog/building-agents-with-github-copilot-sdk-a-practical-guide-to-automated-tech-upda/4488948), [Writing agents](https://github.blog/ai-and-ml/github-copilot/how-to-write-a-great-agents-md-lessons-from-over-2500-repositories/), [agents.md](https://agents.md/) |
 | [`prompts`](./.copilot/prompts) | Template-based prompts with parameters (`.prompt.md`). | Feature templates, bug fix flows, review checklists. `.copilot/prompts/` | [docs](https://docs.github.com/en/copilot/tutorials/customization-library/prompt-files/your-first-prompt-file) | [README.prompts](https://github.com/github/awesome-copilot/blob/main/docs/README.prompts.md) |
 | [`commands`](./.copilot/commands) | Slash commands for deterministic actions without natural language. | `/explain`` - Quick shell, AI tasks | [blog](https://github.blog/ai-and-ml/github-copilot/a-cheat-sheet-to-slash-commands-in-github-copilot-cli/) | |
 | [`plugins`](./.copilot/plugins) | MCP server integrations with `plugin.json`, agents, skills subdirs. | Linear tracking, PostgreSQL access, Slack notifications. `.copilot/plugins/{name}/` | [extensions](https://docs.github.com/en/copilot/how-tos/use-copilot-extensions) | [MS Dev Blog](https://developer.microsoft.com/blog/introducing-awesome-github-copilot-customizations-repo) |

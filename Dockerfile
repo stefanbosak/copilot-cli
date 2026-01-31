@@ -68,8 +68,8 @@ RUN if [ "${TARGETARCH}" = "amd64" ]; then \
       "https://storage.googleapis.com/genai-toolbox/${TOOLBOX_VERSION}/${TARGETOS}/${TARGETARCH}/toolbox" \
   && chmod +x "/usr/local/bin/toolbox"; \
   fi \
-  # Install GitHub Copilot CLI (prerelease), Sequential Thinking MCP server
-  && npm install -g --no-audit --no-fund @github/copilot@prerelease @modelcontextprotocol/server-sequential-thinking \
+  # Install GitHub Copilot CLI (prerelease), Sequential Thinking MCP server, mdflow
+  && npm install -g --no-audit --no-fund @github/copilot@prerelease @modelcontextprotocol/server-sequential-thinking mdflow \
   # Install uv (Python package manager)
   && curl -LsSf https://astral.sh/uv/install.sh \
       | UV_INSTALL_DIR=/usr/local/bin sh \
@@ -89,11 +89,15 @@ SHELL ["/usr/bin/bash", "-c"]
 RUN COPILOT_PATH="/opt/nodejs/node-v${NODE_VERSION}/bin/copilot" \
   && ln -s "${COPILOT_PATH}" /usr/local/bin/copilot \
   && MCP_SERVER_SEQUENTIAL_THINKING_PATH="/opt/nodejs/node-v${NODE_VERSION}/bin/mcp-server-sequential-thinking" \
-  && ln -s "${MCP_SERVER_SEQUENTIAL_THINKING_PATH}" /usr/local/bin/mcp-server-sequential-thinking \
-  && cp /etc/skel/.bashrc /home/node/
+  && ln -s "${MCP_SERVER_SEQUENTIAL_THINKING_PATH}" /usr/local/bin/mcp-server-sequential-thinking
 
 # Switch to non-root user
 USER node
+
+# Install bun (all-in-one JS toolkit)
+RUN cp /etc/skel/.bashrc "${HOME}" \
+    && curl -fsSL https://bun.com/install | bash \
+    && echo 'export PATH=${HOME}/.bun/bin:${PATH}' >> "${HOME}/.bashrc"
 
 WORKDIR /workspace
 
