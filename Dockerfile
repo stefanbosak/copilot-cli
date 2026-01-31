@@ -85,11 +85,13 @@ RUN if [ "${TARGETARCH}" = "amd64" ]; then \
 # Configure bash shell for subsequent RUN commands
 SHELL ["/usr/bin/bash", "-c"]
 
-# Create symlink for tools and setup user environment
+# Create symlinks for tools and setup user environment
 RUN COPILOT_PATH="/opt/nodejs/node-v${NODE_VERSION}/bin/copilot" \
   && ln -s "${COPILOT_PATH}" /usr/local/bin/copilot \
   && MCP_SERVER_SEQUENTIAL_THINKING_PATH="/opt/nodejs/node-v${NODE_VERSION}/bin/mcp-server-sequential-thinking" \
-  && ln -s "${MCP_SERVER_SEQUENTIAL_THINKING_PATH}" /usr/local/bin/mcp-server-sequential-thinking
+  && ln -s "${MCP_SERVER_SEQUENTIAL_THINKING_PATH}" /usr/local/bin/mcp-server-sequential-thinking \
+  && MDFLOW_PATH="/opt/nodejs/node-v${NODE_VERSION}/bin/mdflow" \
+  && ln -s "${MDFLOW_PATH}" /usr/local/bin/mdflow
 
 # Switch to non-root user
 USER node

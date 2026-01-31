@@ -16,7 +16,12 @@
 ## 📋 Overview
 
 This repository provides a fully <span style="color: #0969da;">**containerized**</span> [GitHub Copilot CLI](https://github.com/github/copilot-cli) environment with integrated <span style="color: #8250df;">**MCP server**</span> support using <span style="color: #1a7f37;">**Docker-in-Docker**</span> architecture.
-Main goal of selected approach is to isolate AI scope from the rest of environment (proactively reduce possible unwanted impact/consequences in general).
+
+**About solution**
+- sandboxing environment for AI scope (reduced possible negative impact via isolation)
+- packaging up-to-date tool versions (optimized maintenance effort via automation)
+- strong focus on security (mitigated security issues and vulnerabilities through hardening)
+- simplification of the initial run-up (see: [Container runner script](./copilot.sh), [GitHub Copilot setup](./.copilot/config.json), [Environment configuration](./.copilot/.env))
 
 ### 📚 Resources
 
@@ -39,9 +44,9 @@ Main goal of selected approach is to isolate AI scope from the rest of environme
 > Users are solely responsible for any modifications or execution of code from this repository.
 
 ## 🛠️ Utilities
-- [uv](https://github.com/astral-sh/uv)
-- [bun](https://github.com/oven-sh/bun)
-- [mdflow](https://github.com/johnlindquist/mdflow)
+- [uv](https://github.com/astral-sh/uv) - An extremely fast Python package installer and resolver
+- [bun](https://github.com/oven-sh/bun) - All-in-one JavaScript runtime and toolkit for faster development
+- [mdflow](https://github.com/johnlindquist/mdflow) - Markdown-based workflow automation tool for streamlined task execution
 
 ## 🔌 MCP Servers
 
@@ -142,10 +147,10 @@ Main goal of selected approach is to isolate AI scope from the rest of environme
 ### <span style="color: #0969da;">Docker & Build</span>
 | File | Description |
 |------|-------------|
-| [`Dockerfile`](./Dockerfile) | <span style="color: #0969da;">Container image configuration</span> |
-| [`copilot-build.sh`](./copilot-build.sh) | <span style="color: #1a7f37;">Build automation script</span> |
-| [`copilot.sh`](./copilot.sh) | <span style="color: #1a7f37;">Execution wrapper script</span> |
-| [`act.sh`](./act.sh) | <span style="color: #1a7f37;">Act tool script</span> |
+| [`Dockerfile`](./Dockerfile) | <span style="color: #0969da;">Recipe for building container images</span> |
+| [`copilot-build.sh`](./copilot-build.sh) | <span style="color: #1a7f37;">Standalone container build script</span> |
+| [`copilot.sh`](./copilot.sh) | <span style="color: #1a7f37;">GitHub Copilot container runner script</span> |
+| [`act.sh`](./act.sh) | <span style="color: #1a7f37;">[Act](https://github.com/nektos/act) tool wrapper script</span> |
 
 ### <span style="color: #d73a49;">Dependencies</span>
 | File | Description |
