@@ -19,16 +19,7 @@ LABEL org.opencontainers.image.authors="Stefan Bosak" \
       org.opencontainers.image.title="GitHub Copilot CLI container" \
       org.opencontainers.image.description="Debian-based GitHub Copilot CLI container"
 
-# Python 3.14 from deadsnakes PPA (not in Debian 13/trixie distribution)
-COPY ./deadsnakes.list /etc/apt/sources.list.d/deadsnakes.list
-COPY ./deadsnakes.gpg /usr/share/keyrings/deadsnakes.gpg
-
-
-RUN echo 'APT::Hashes::SHA1::Weak "yes";\n\
-APT::Key::Assert-Pubkey-Algo ">=rsa1024";\n\
-Acquire::AllowWeakRepositories "true";' \
-> /etc/apt/apt.conf.d/99allow-weak-digests \
-  && apt-get update \
+RUN apt-get update \
   && apt-get install -y --no-install-recommends \
     bash \
     bash-completion \
@@ -48,7 +39,7 @@ Acquire::AllowWeakRepositories "true";' \
     pigz \
     procps \
     psmisc \
-    python3.14-venv \
+    python3-venv \
     ripgrep \
     rsync \
     socat \
@@ -56,9 +47,6 @@ Acquire::AllowWeakRepositories "true";' \
     vim \
     wget \
     whois \
-  && apt-get remove -y python3 \
-  && update-alternatives --install /usr/bin/python python /usr/bin/python3.14 0 \
-  && update-alternatives --install /usr/bin/python3 python3 /usr/bin/python3.14 0 \
   && apt-get clean \
   && apt-get autoremove -y \
   && rm -rf /var/lib/apt/lists/*
