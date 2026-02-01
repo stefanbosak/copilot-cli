@@ -8,11 +8,6 @@ concurrency:
 on:
   workflow_dispatch:
 
-env:
-  DH_REGISTRY: docker.io
-  CONTAINER_TAG: initial
-  REPOSITORY_NAME: ${{ github.event.repository.name }}
-
 jobs:
   test-on-linux:
     runs-on: ${{ matrix.runner }}
@@ -23,7 +18,7 @@ jobs:
       contents: read
       packages: write
     container:
-      image: '${{ env.DH_REGISTRY }}/${{ secrets.DH_USER }}/${{ env.REPOSITORY_NAME }}:${{ env.CONTAINER_TAG }}'
+      image: 'docker.io/${{ secrets.DH_USER }}/${{ github.event.repository.name }}:initial'
       options:
         -v /dev:/dev
         -u root
