@@ -21,7 +21,7 @@ env:
   CONTAINER_TAG: initial
 
 jobs:
-  docker-build-test-tag-push:
+  docker-build-tag-push:
     runs-on: ${{ matrix.runner }}
     strategy:
       matrix:

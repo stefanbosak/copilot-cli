@@ -8,6 +8,10 @@ concurrency:
 on:
   workflow_dispatch:
 
+env:
+  DH_REGISTRY: docker.io
+  CONTAINER_TAG: initial
+
 jobs:
   test-on-linux:
     runs-on: ${{ matrix.runner }}
@@ -18,7 +22,7 @@ jobs:
       contents: read
       packages: write
     container:
-      image: docker.io/developmententity/copilot-cli:initial
+      image: '${{ env.DH_REGISTRY }}/${{ secrets.DH_USER }}/${{ env.REPOSITORY_NAME }}:${{ env.CONTAINER_TAG }}'
       options:
         -v /dev:/dev
         -u root
@@ -28,4 +32,4 @@ jobs:
         shell: bash
         run: |
           echo -ne "COPILOT_CLI_VERSION="
-          copilot --version | awk '{print $1}' | head -n 1
+          copilot --version | awk '{print $NF}' | head -n 1
