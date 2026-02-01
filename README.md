@@ -152,12 +152,6 @@ This repository provides a fully <span style="color: #0969da;">**containerized**
 | [`copilot.sh`](./copilot.sh) | <span style="color: #1a7f37;">GitHub Copilot container runner script</span> |
 | [`act.sh`](./act.sh) | <span style="color: #1a7f37;">[Act](https://github.com/nektos/act) tool wrapper script</span> |
 
-### <span style="color: #d73a49;">Dependencies</span>
-| File | Description |
-|------|-------------|
-| [`deadsnakes.gpg`](./deadsnakes.gpg) | GPG key for deadsnakes PPA |
-| [`deadsnakes.list`](./deadsnakes.list) | APT source list for Python repository |
-
 
 ## 🐳 Container Images
 
