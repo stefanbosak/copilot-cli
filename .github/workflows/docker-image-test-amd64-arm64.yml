@@ -11,6 +11,7 @@ on:
 env:
   DH_REGISTRY: docker.io
   CONTAINER_TAG: initial
+  REPOSITORY_NAME: ${{ github.event.repository.name }}
 
 jobs:
   test-on-linux:
@@ -28,12 +29,6 @@ jobs:
         -u root
 
     steps:
-      - name: 'Set parameters to GITHUB_ENV'
-        shell: bash
-        run: |
-          echo "REPOSITORY_NAME=$(echo '${{ github.repository }}' | cut -d'/' -f2)" >> ${GITHUB_ENV}
-          echo "GITHUB_ENV:"
-          cat ${GITHUB_ENV}
       - name: 'Docker image test'
         shell: bash
         run: |
