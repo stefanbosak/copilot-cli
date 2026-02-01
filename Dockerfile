@@ -23,7 +23,8 @@ LABEL org.opencontainers.image.authors="Stefan Bosak" \
 COPY ./deadsnakes.list /etc/apt/sources.list.d/deadsnakes.list
 COPY ./deadsnakes.gpg /usr/share/keyrings/deadsnakes.gpg
 
-RUN apt-get update \
+RUN echo 'APT::Hashes::SHA1::Weak "yes";' > /etc/apt/apt.conf.d/99allow-weak-digests \
+  && apt-get update \
   && apt-get install -y --no-install-recommends \
     bash \
     bash-completion \
