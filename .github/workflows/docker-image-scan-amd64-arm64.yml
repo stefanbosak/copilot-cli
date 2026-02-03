@@ -2,7 +2,7 @@ name: 'Scan multi-platform Docker images'
 run-name: '${{ github.ref_type }}_${{ github.ref_name }}@${{ github.triggering_actor }}'
 
 concurrency:
-  group: ${{ github.workflow }}-${{ github.ref }}
+  group: ${{ github.workflow }}-${{ github.head_ref || github.ref }}
   cancel-in-progress: true
 
 on:

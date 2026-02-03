@@ -10,7 +10,7 @@ copilot() {
   # extract Docker GID from the system
   export DOCKER_GID=$(getent group docker | cut -d: -f3)
 
-  docker run -it --rm \
+  docker run -it --rm --cpus 4 --memory 1G \
     --group-add "${DOCKER_GID}" \
     --env-file "${HOME}/.copilot/.env" \
     -v /var/run/docker.sock:/var/run/docker.sock \
@@ -20,7 +20,7 @@ copilot() {
     -v "${HOME}/.docker/mcp:/home/node/.docker/mcp" \
     -w "/workspace" \
     ghcr.io/stefanbosak/copilot-cli:initial \
-    copilot --no-auto-update --allow-all-tools "$@"
+    copilot --no-auto-update --allow-all-tools --allow-all-urls --silent "$@"
 }
 
 # run

@@ -46,6 +46,8 @@
       "args": [
         "run",
         "--rm",
+        "--cpus=2",
+        "--memory=256M",
         "-i",
         "--network=host",
         "mcp/fetch"
@@ -60,6 +62,8 @@
       "args": [
         "run",
         "--rm",
+        "--cpus=2",
+        "--memory=256M",
         "-i",
         "--network=host",
         "-e",
