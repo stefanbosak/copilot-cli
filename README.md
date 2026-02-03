@@ -18,19 +18,27 @@
 This repository provides a fully <span style="color: #0969da;">**containerized**</span> [GitHub Copilot CLI](https://github.com/github/copilot-cli) environment with integrated <span style="color: #8250df;">**MCP server**</span> support using <span style="color: #1a7f37;">**Docker-in-Docker**</span> architecture.
 
 **About solution**
-- sandboxing environment for AI scope (reduced possible negative impact via isolation)
-- packaging up-to-date tool versions (optimized maintenance effort via automation)
-- strong focus on security (mitigated security issues and vulnerabilities through hardening)
-- simplification of the initial run-up (see: [Container runner script](./copilot.sh), [GitHub Copilot setup](./.copilot/config.json), [Environment configuration](./.copilot/.env))
+- Sandboxing environment for AI scope (reduced possible negative impact via isolation)
+- Automated packaging of current tool versions (optimized maintenance effort via automation)
+- Strong focus on security (mitigated security issues and vulnerabilities through hardening)
+- Simplification of the initial run-up (see: [Container runner script](./copilot.sh), [GitHub Copilot setup](./.copilot/config.json), [Environment configuration](./.copilot/.env))
 
 ### 📚 Resources
 
 - 📖 [Official Documentation](https://docs.github.com/en/copilot/concepts/agents/about-copilot-cli)
 - 📖 [AI models database](https://models.dev)
 - 🤖 [Supported AI Models](https://docs.github.com/en/copilot/reference/ai-models/supported-models#model-retirement-history)
-  - **Recommended**:
+  - **Recommended models**:
     - <span style="color: #8250df;">**Claude Sonet-4.5**</span> - [Documentation](https://www.anthropic.com/claude/sonnet)
     - <span style="color: #a371f7;">**Claude Opus-4.5**</span> - [Documentation](https://www.anthropic.com/claude/opus)
+  - **Effective Prompting**:
+    - Save output to prevent data loss (reduce costs)
+    - Iteratively processing excessively long messages (drop error rate ~<10%)
+    - XML tags ensure structural clarity (compliance increase to ~>98 %)
+    - Validate continuously (maintain ~>95% accuracy)
+    - Instruct what to avoid, not what to do (significantly reduce hallucination by ~>60 %)
+    - Contextualize personas (~<15 % improvement using personas)
+
 
 ### ⚠️ Important Notices
 
