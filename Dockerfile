@@ -29,6 +29,7 @@ RUN apt-get update \
     dnsutils \
     gh \
     git \
+    gpg \
     gzip \
     iproute2 \
     iputils-ping \
