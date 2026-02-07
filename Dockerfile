@@ -30,6 +30,7 @@ RUN apt-get update \
     gh \
     git \
     gpg \
+    gpg-agent \
     gzip \
     iproute2 \
     iputils-ping \
