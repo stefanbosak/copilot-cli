@@ -93,7 +93,7 @@ jobs:
         with:
           username: ${{ secrets.DH_USER }}
           password: ${{ secrets.DH_TOKEN }}
-          repositories:  ${{ env.REPOSITORY_NAME }}
+          repositories: ${{ env.REPOSITORY_NAME }}
           sha-retention-days: 15
           dry-run: false
       - name: 'Build, tag and push multi-platforms Docker images to preconfigured container registries'
