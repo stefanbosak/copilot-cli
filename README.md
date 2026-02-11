@@ -30,7 +30,7 @@ This repository provides a fully <span style="color: #0969da;">**containerized**
 - 🤖 [Supported AI Models](https://docs.github.com/en/copilot/reference/ai-models/supported-models#model-retirement-history)
   - **Recommended models**:
     - <span style="color: #8250df;">**Claude Sonnet-4.5**</span> - [Documentation](https://www.anthropic.com/claude/sonnet)
-    - <span style="color: #a371f7;">**Claude Opus-4.5**</span> - [Documentation](https://www.anthropic.com/claude/opus)
+    - <span style="color: #a371f7;">**Claude Opus-4.6**</span> - [Documentation](https://www.anthropic.com/claude/opus) (normal, fast)
   - **Effective Prompting**:
     - Save output to prevent data loss (reduce costs)
     - Iteratively processing excessively long messages (drop error rate ~<10%)
