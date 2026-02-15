@@ -116,3 +116,5 @@ jobs:
             org.opencontainers.image.url=${{ github.server_url }}/${{ github.repository }}
             org.opencontainers.image.source=${{ github.server_url }}/${{ github.repository }}
           platforms: linux/amd64,linux/arm64
+          outputs: |
+            type=image,compression=gzip,compression-level=3,force-compression=true
