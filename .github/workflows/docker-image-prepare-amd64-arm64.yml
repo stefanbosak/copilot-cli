@@ -86,7 +86,8 @@ jobs:
           owner: ${{ github.repository_owner }}
           package-name: ${{ env.REPOSITORY_NAME }}
           package-type: 'container'
-          token: ${{ secrets.GH_TOKEN }}
+          token: ${{ secrets.GITHUB_TOKEN }}
+          delete-only-untagged-versions: 'true'
           min-versions-to-keep: 3
       - name: 'Clean old containers in DockerHub Container Registry'
         uses: lostlink/docker-cleanup@main
