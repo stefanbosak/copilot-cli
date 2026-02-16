@@ -29,7 +29,7 @@ jobs:
         runner: [ubuntu-latest]
     permissions:
       contents: read
-      packages: write,delete
+      packages: write
     steps:
       - name: 'Checkout'
         uses: actions/checkout@main
@@ -86,7 +86,7 @@ jobs:
           owner: ${{ github.repository_owner }}
           package-name: ${{ env.REPOSITORY_NAME }}
           package-type: 'container'
-          token: ${{ secrets.GITHUB_TOKEN }}
+          token: ${{ secrets.GH_TOKEN }}
           min-versions-to-keep: 3
       - name: 'Clean old containers in DockerHub Container Registry'
         uses: lostlink/docker-cleanup@main
