@@ -61,7 +61,7 @@ jobs:
         with:
           registry: ${{ env.GH_REGISTRY }}
           username: ${{ github.repository_owner }}
-          password: ${{ secrets.GH_TOKEN }}
+          password: ${{ secrets.GITHUB_TOKEN }}
           ecr: false
           logout: true
       - name: 'Login to DockerHub Container Registry'
@@ -86,7 +86,7 @@ jobs:
           owner: ${{ github.repository_owner }}
           package-name: ${{ env.REPOSITORY_NAME }}
           package-type: 'container'
-          token: ${{ secrets.GH_TOKEN }}
+          token: ${{ secrets.GITHUB_TOKEN }}
           min-versions-to-keep: 3
       - name: 'Clean old containers in DockerHub Container Registry'
         uses: lostlink/docker-cleanup@main
@@ -104,9 +104,9 @@ jobs:
           push: true
           provenance: false
           no-cache: false
-          github-token: ${{ secrets.GH_TOKEN }}
+          github-token: ${{ secrets.GITHUB_TOKEN }}
           secrets: |
-            GIT_AUTH_TOKEN=${{ secrets.GH_TOKEN }}
+            GIT_AUTH_TOKEN=${{ secrets.GITHUB_TOKEN }}
           tags: |
             ${{ env.GH_REGISTRY }}/${{ github.repository }}:${{ env.CONTAINER_TAG }}
             ${{ env.DH_REGISTRY }}/${{ secrets.DH_USER }}/${{ env.REPOSITORY_NAME }}:${{ env.CONTAINER_TAG }}
