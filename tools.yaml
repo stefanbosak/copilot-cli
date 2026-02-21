@@ -2,7 +2,7 @@
 # Reference: https://googleapis.github.io/genai-toolbox/resources/sources/postgres/
 
 sources:
-  my-pg-source:
+  test-source:
     kind: sources
     name: test-source
     type: postgres
