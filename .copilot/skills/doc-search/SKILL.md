@@ -1,3 +1,8 @@
+---
+name: doc-search
+description: "Tools for gathering documentation details"
+---
+
 # Documentation Search Skill
 
 ## Metadata
@@ -36,7 +41,7 @@ Include `#ref` tag in your prompt to activate this skill.
 ```
 
 ## Configuration
-Use `ref` defined in `mcp-config.json`.
+MCP server is defined as `ref` in `mcp-config.json`.
 
 ## Environment Variables
 Use environment variables defined in `.env`.

@@ -7,8 +7,6 @@
       "type": "local",
       "command": "/usr/local/bin/toolbox",
       "args": [
-        "--prebuilt",
-        "postgres",
         "--stdio"
       ],
       "env": {
@@ -104,6 +102,13 @@
       "headers": {
         "Authorization": "Basic <BASE64_TOKEN>"
       }
+    },
+    "jira": {
+      "tools": [
+        "*"
+      ],
+      "type": "sse",
+      "url": "https://jira.domain.tld/sse"
     }
   }
 }

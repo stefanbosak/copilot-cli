@@ -1,3 +1,8 @@
+---
+name: graylog-prd
+description: "Tools for interaction with graylog production environment"
+---
+
 # Graylog Production Environment Skill
 
 ## Metadata
@@ -36,7 +41,7 @@ Include `#graylog-prd` tag in your prompt to activate this skill.
 ```
 
 ## Configuration
-Use `grafana-prd` defined in `mcp-config.json`.
+MCP server is defined as `graylog-prd` in `mcp-config.json`.
 
 ## Environment Variables
 Use environment variables defined in `.env`.

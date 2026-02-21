@@ -1,3 +1,8 @@
+---
+name: time-conversion
+description: "Tools for time conversions"
+---
+
 # Time Conversion Skill
 
 ## Metadata
@@ -36,7 +41,7 @@ Include `#time` tag in your prompt to activate this skill.
 ```
 
 ## Configuration
-Use `time` defined in `mcp-config.json`.
+MCP server is defined as `time` in `mcp-config.json`.
 
 ## Environment variables
 Use environment variables defined in `.env`.

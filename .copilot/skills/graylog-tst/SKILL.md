@@ -1,3 +1,8 @@
+---
+name: graylog-tst
+description: "Tools for interaction with graylog testing environment"
+---
+
 # Graylog Test Environment Skill
 
 ## Metadata
@@ -36,7 +41,7 @@ Include `#graylog-tst` tag in your prompt to activate this skill.
 ```
 
 ## Configuration
-Use `graylog-prd` defined in `mcp-config.json`.
+MCP server is defined as `graylog-tst` in `mcp-config.json`.
 
 ## Environment Variables
 Use environment variables defined in `.env`.

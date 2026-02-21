@@ -1,3 +1,8 @@
+---
+name: grafana-prd
+description: "Tools for interaction with grafana production environment"
+---
+
 # Grafana Production Environment Skill
 
 ## Metadata
@@ -36,7 +41,7 @@ Include `#grafana-prd` tag in your prompt to activate this skill.
 ```
 
 ## Configuration
-Use `grafana-prd` defined in `mcp-config.json`.
+MCP server is defined as `grafana-prd` in `mcp-config.json`.
 
 ## Environment Variables
 Use environment variables defined in `.env`.

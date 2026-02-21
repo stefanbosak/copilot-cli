@@ -1,3 +1,8 @@
+---
+name: web-search
+description: "Tools for web search"
+---
+
 # Web Search Skill
 
 ## Metadata
@@ -36,7 +41,7 @@ Include `#fetch` tag in your prompt to activate this skill.
 ```
 
 ## Configuration
-Use `fetch` defined in `mcp-config.json`.
+MCP server is defined as `fetch` in `mcp-config.json`.
 
 ## Environment Variables
 Use environment variables defined in `.env`.

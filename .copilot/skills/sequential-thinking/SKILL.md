@@ -1,3 +1,8 @@
+---
+name: sequential-thinking
+description: "Tools for step-by-step reasoning"
+---
+
 # Sequential Thinking Skill
 
 ## Metadata
@@ -36,7 +41,7 @@ Include `#st` tag in your prompt to activate this skill.
 ```
 
 ## Configuration
-Use `st` defined in `mcp-config.json`.
+MCP server is defined as `sequentialthinking` in `mcp-config.json`.
 
 ## Best Practices
 - Use for complex, multi-step problems

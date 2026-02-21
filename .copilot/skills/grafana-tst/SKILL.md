@@ -1,3 +1,8 @@
+---
+name: grafana-tst
+description: "Tools for interaction with grafana testing environment"
+---
+
 # Grafana Test Environment Skill
 
 ## Metadata
@@ -36,7 +41,7 @@ Include `#grafana-tst` tag in your prompt to activate this skill.
 ```
 
 ## Configuration
-Use `grafana-tst` defined in `mcp-config.json`.
+MCP server is defined as `grafana-tst` in `mcp-config.json`.
 
 ## Environment Variables
 Use environment variables defined in `.env`.
