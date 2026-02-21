@@ -9,3 +9,19 @@ port: ${POSTGRES_PORT}
 database: ${POSTGRES_DATABASE}
 user: ${POSTGRES_USER}
 password: ${POSTGRES_PASSWORD}
+---
+kind: tools
+name: execute-sql
+type: postgres-sql
+source: test-source
+description: Execute any SQL query against the PostgreSQL database.
+statement: "{{.sql}}"
+templateParameters:
+  - name: sql
+    type: string
+    description: The SQL query to execute against the database.
+---
+kind: toolsets
+name: test-toolset
+tools:
+  - execute-sql
