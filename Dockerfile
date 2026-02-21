@@ -19,6 +19,8 @@ LABEL org.opencontainers.image.authors="Stefan Bosak" \
       org.opencontainers.image.title="GitHub Copilot CLI container" \
       org.opencontainers.image.description="Debian-based GitHub Copilot CLI container"
 
+COPY "./tools.yaml" "/usr/local/bin/tools.yaml"
+
 RUN apt-get update \
   && apt-get install -y --no-install-recommends \
     bash \

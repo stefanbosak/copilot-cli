@@ -1,0 +1,13 @@
+# GenAI Toolbox - PostgreSQL configuration
+# Reference: https://googleapis.github.io/genai-toolbox/resources/sources/postgres/
+
+sources:
+  my-pg-source:
+    kind: sources
+    name: test-source
+    type: postgres
+    host: ${POSTGRES_HOST}
+    port: ${POSTGRES_PORT}
+    database: ${POSTGRES_DATABASE}
+    user: ${POSTGRES_USER}
+    password: ${POSTGRES_PASSWORD}
