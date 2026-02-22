@@ -47,10 +47,11 @@ MCP server is defined as `time` in `mcp-config.json`.
 Use environment variables defined in `.env`.
 
 ## Best Practices
-- Always use IANA timezone names (Europe/Bratislava)
-- Consider daylight saving time transitions
-- Use for international meeting scheduling
-- Verify timezone abbreviations vs IANA names
+- Use IANA timezone names (e.g., `Europe/Bratislava`, `America/New_York`, `Asia/Tokyo`)
+- UTC offsets (e.g., `+05:30`) are also accepted but IANA names are preferred for DST accuracy
+- Consider daylight saving time transitions when scheduling future events
+- Use for international meeting scheduling across multiple timezones
+- Verify timezone abbreviations (EST, BST) — prefer IANA names as abbreviations are ambiguous
 
 ## Limitations
 - Requires IANA timezone database

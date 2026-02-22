@@ -12,13 +12,54 @@ description: "Tools for interaction with grafana production environment"
 - **Category**: Monitoring (Production Environment)
 
 ## Description
-Access Grafana production environment for live metrics, dashboards, and monitoring data. Used for production monitoring, incident response, and performance analysis.
+Access Grafana production environment for live observability data. Covers metrics (Prometheus), logs (Loki), traces (Tempo), profiling (Pyroscope), incident management, OnCall schedules, Sift investigations, alerting, and dashboard management.
 
 ## Capabilities
-- Query Prometheus metrics from production
-- Access production dashboards
-- Retrieve production alerts and notifications
-- Analyze production performance and incidents
+
+### Metrics (Prometheus)
+- Query PromQL against production Prometheus datasources
+- List metric names, label names, label values, and metadata
+- Query histograms and percentiles
+
+### Logs (Loki)
+- Execute LogQL queries for production log retrieval
+- List log label names and values
+- Query log patterns and statistics
+- Stream log data with filtering and parsing
+
+### Traces (Tempo)
+- Find slow requests in production
+- Analyze distributed traces
+
+### Profiling (Pyroscope)
+- Fetch CPU, memory, goroutine profiles for production services
+- List profile types and label values per service
+
+### Incidents & OnCall
+- Create, list, and get incident details
+- Add timeline notes to incidents
+- List OnCall schedules, teams, users
+- Get current on-call users for a schedule
+
+### Sift Investigations
+- Create and retrieve automated investigations
+- Find error patterns in logs
+- Find slow requests across services
+
+### Alerting
+- List, get, create, update, delete alert rules
+- List contact points and notification policies
+- List alert groups from OnCall
+
+### Dashboards
+- Search, get, create, update dashboards
+- Get panel queries and dashboard summaries
+- Generate deeplinks to dashboards or panels
+- Render panel/dashboard images (PNG)
+- Create and manage annotations
+
+### Datasources
+- List, get datasources by name or UID
 
 ## Activation
 Include `#grafana-prd` tag in your prompt to activate this skill.
@@ -27,17 +68,32 @@ Include `#grafana-prd` tag in your prompt to activate this skill.
 
 ### Live Metrics
 ```
-#grafana-prd Show current CPU usage for production API
+#grafana-prd Show current CPU usage for production API service
 ```
 
-### Incident Analysis
+### Log Investigation
 ```
-#grafana-prd #fetch Analyze error spike in last hour
+#grafana-prd Search production Loki logs for errors in the auth service last 30 minutes
 ```
 
-### Performance Review
+### Incident Response
 ```
-#grafana-prd Compare response times week-over-week
+#grafana-prd #fetch Create incident: "Payment service elevated error rate" severity critical
+```
+
+### Trace Analysis
+```
+#grafana-prd Find slow requests in production for service checkout last 1 hour
+```
+
+### OnCall
+```
+#grafana-prd Who is currently on call?
+```
+
+### Alert Rules
+```
+#grafana-prd List all firing alert rules in production
 ```
 
 ## Configuration
@@ -47,17 +103,18 @@ MCP server is defined as `grafana-prd` in `mcp-config.json`.
 Use environment variables defined in `.env`.
 
 ## Best Practices
-- Use for production monitoring and incident response
-- Never mix with #grafana-tst in same query
-- Verify production environment before querying
-- Handle production data with care
-- Use read-only tokens when possible
+- Use `list_datasources` first to find correct datasource UIDs before querying
+- Use `list_prometheus_metric_names` before writing PromQL
+- Use `list_loki_label_names` / `list_loki_label_values` before writing LogQL
+- Use `query_loki_stats` to check log volume before fetching entries
+- Use `get_dashboard_summary` instead of `get_dashboard_by_uid` for large dashboards
+- Never mix with `#grafana-tst` in the same request
 
 ## Limitations
-- Production environment - use responsibly
-- May have rate limits
-- Requires proper authentication and authorization
-- Environment must be available
+- Production environment — use responsibly; avoid heavy queries during peak hours
+- Write operations (create/update alerts, incidents) require appropriate permissions
+- Image rendering requires Grafana Image Renderer service
+- Rate limits may apply on high-cardinality metric queries
 
 ## Environment Isolation
-**CRITICAL**: Never use #grafana-prd and #grafana-tst in the same request. Choose one environment per query.
+**CRITICAL**: Never use `#grafana-prd` and `#grafana-tst` in the same request. Choose one environment per query.

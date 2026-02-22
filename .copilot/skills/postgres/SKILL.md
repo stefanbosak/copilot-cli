@@ -55,12 +55,7 @@ Use `postgres` defined in `mcp-config.json`.
 Use environment variables defined in `.env`.
 
 ## Connectivity Verification
-Before running queries, verify PostgreSQL connection:
-
-```bash
-# Using MCP toolbox
-toolbox postgres ping
-```
+Before running queries, verify PostgreSQL is reachable via the MCP server tools (e.g., try listing databases). Do not use shell/bash commands to verify connectivity.
 
 ## Best Practices
 - Always verify connection before queries (rule requirement)

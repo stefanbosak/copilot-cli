@@ -8,17 +8,21 @@ description: "Tools for step-by-step reasoning"
 ## Metadata
 - **Skill Name**: sequential-thinking
 - **Trigger Tag**: `#st`
-- **MCP Server**: Built-in reasoning enhancement
+- **MCP Server**: sequentialthinking (built-in reasoning enhancement)
 - **Category**: Problem Solving
 
+> **Note**: Activated with `#st` (short for sequential thinking). Use when a problem requires breaking down into explicit, verifiable reasoning steps.
+
 ## Description
-Use step-by-step reasoning for complex problem-solving. Breaks down complex queries into logical steps with structured thinking process.
+Engage structured step-by-step reasoning for complex problem-solving. Breaks down queries into logical steps with the ability to revise, branch, and verify thinking before arriving at a final answer. Reduces reasoning errors on multi-step or ambiguous problems.
 
 ## Capabilities
-- Multi-step problem decomposition
-- Logical reasoning chains
-- Complex algorithm design
-- Systematic debugging approaches
+- Multi-step problem decomposition with explicit thought chain
+- Hypothesis generation and verification
+- Ability to revise earlier reasoning steps mid-chain
+- Branching for exploring alternative approaches
+- Systematic debugging through structured analysis
+- Architectural and design decision reasoning
 
 ## Activation
 Include `#st` tag in your prompt to activate this skill.
@@ -27,29 +31,37 @@ Include `#st` tag in your prompt to activate this skill.
 
 ### Algorithm Design
 ```
-#st Design an efficient algorithm for finding duplicates in large dataset
+#st Design an efficient algorithm for finding duplicates in a large dataset
 ```
 
 ### Complex Debugging
 ```
-#st Debug why authentication flow fails intermittently
+#st Debug why the authentication flow fails intermittently under load
 ```
 
 ### Architecture Planning
 ```
-#st Plan microservices architecture for e-commerce platform
+#st Plan microservices decomposition for an e-commerce platform
+```
+
+### Root Cause Analysis
+```
+#st Analyze why memory usage grows over time in this Node.js service
 ```
 
 ## Configuration
 MCP server is defined as `sequentialthinking` in `mcp-config.json`.
 
+## Environment Variables
+None required. This is a built-in reasoning tool with no external service dependency.
+
 ## Best Practices
-- Use for complex, multi-step problems
-- Ideal for architectural decisions
-- Helpful for debugging complex issues
-- Good for algorithm design and optimization
+- Use for complex, multi-step problems where linear reasoning may miss edge cases
+- Ideal for architectural decisions with multiple valid tradeoffs
+- Helpful for debugging non-obvious or intermittent issues
+- Good for algorithm design where correctness must be verified step-by-step
+- Overkill for simple, well-defined questions
 
 ## Limitations
-- May increase response time for simple queries
-- More verbose output
-- Best for complex problems, overkill for simple tasks
+- Increases response length and time compared to direct answers
+- Not needed for straightforward lookup or simple code generation tasks

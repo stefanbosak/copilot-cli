@@ -12,13 +12,22 @@ description: "Tools for interaction with graylog production environment"
 - **Category**: Log Management (Production Environment)
 
 ## Description
-Access Graylog production environment for live log analysis, incident investigation, and production debugging. Critical for production incident response and troubleshooting.
+Access Graylog production environment for real-time log search, aggregation, and analysis. Use for production incident response, error investigation, and system behavior tracking. Logs are organized into **streams** and stored in **indices**. Queries use **Lucene syntax**.
 
 ## Capabilities
-- Search production logs in real-time
-- Analyze production error patterns
-- Investigate production incidents
-- Track production system behavior
+- Search production log messages using Lucene query syntax
+- Aggregate logs (group by fields, count, avg, min, max, percentiles, etc.)
+- List available streams and scope searches to specific streams
+- List indices and index sets (data retention configuration)
+- List configured inputs (syslog, GELF, etc.)
+- Discover available fields per stream (`list_fields`) before querying
+- Get current server time and system status
+
+## Key Concepts
+- **Streams**: Named partitions of log data (e.g., by app, environment, source). Always scope searches to streams for performance.
+- **Indices**: Physical storage units; use `list_indices` to check data availability and health.
+- **Fields**: Field names vary per stream. Always call `list_fields` first to discover valid field names before building queries.
+- **Lucene syntax**: Queries use Lucene (e.g., `level:ERROR AND source:api-server`). Leading wildcards are disabled by default.
 
 ## Activation
 Include `#graylog-prd` tag in your prompt to activate this skill.
@@ -27,17 +36,27 @@ Include `#graylog-prd` tag in your prompt to activate this skill.
 
 ### Incident Investigation
 ```
-#graylog-prd Search for errors related to payment processing
+#graylog-prd Search production logs for errors related to payment processing in last 2 hours
 ```
 
-### Real-time Analysis
+### Aggregate Error Count by Source
 ```
-#graylog-prd #fetch Analyze current error spike in production
+#graylog-prd Count errors grouped by source in production last 1 hour
 ```
 
-### System Monitoring
+### Authentication Failures
 ```
 #graylog-prd Show authentication failures in last 24 hours
+```
+
+### Discover Fields First
+```
+#graylog-prd List available fields in the production application stream
+```
+
+### Real-time Analysis with Web Search
+```
+#graylog-prd #fetch Analyze current error spike in production
 ```
 
 ## Configuration
@@ -47,17 +66,17 @@ MCP server is defined as `graylog-prd` in `mcp-config.json`.
 Use environment variables defined in `.env`.
 
 ## Best Practices
-- Use for production incident response
-- Never mix with #graylog-tst in same query
-- Verify environment connection before queries
-- Handle production logs responsibly
-- Use read-only access when possible
+- **Always call `list_streams` first** to get stream IDs, then scope searches using `streams` parameter
+- **Always call `list_fields` before querying** to discover valid field names for the target stream
+- Use `aggregate_messages` instead of `search_messages` for counting/grouping
+- Pass time range as `range_seconds` parameter — never embed time in the query string
+- Avoid leading wildcards in Lucene queries (disabled by default)
 
 ## Limitations
-- Production environment - use with care
-- May have rate limits
+- Production environment — use with care, large queries may impact performance
+- Leading wildcards are disabled in Lucene queries
 - Requires proper authentication
-- Large queries may impact performance
+- Data availability depends on index retention policies
 
 ## Environment Isolation
-**CRITICAL**: Never use #graylog-prd and #graylog-tst in the same request. Choose one environment per query.
+**CRITICAL**: Never use `#graylog-prd` and `#graylog-tst` in the same request. Choose one environment per query.
