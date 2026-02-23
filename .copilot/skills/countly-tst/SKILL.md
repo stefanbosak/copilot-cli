@@ -55,14 +55,21 @@ Include `#countly-tst` tag in your prompt to activate this skill.
 ```
 
 ## Configuration
-MCP server is defined as `countly-tst` in `mcp-config.json`.
+Do NOT search the filesystem for `mcp-config.json` or similar files directly.
+Do NOT read `~/.copilot/mcp-config.json` directly — always route through custom agent file.
+MCP server is configured in the `countly-tst.agent.md` custom agent file.
 
 ## Environment Variables
-Use environment variables defined in `.env`.
+Use environment variables defined in `.copilot/.env`.
+
+## Connectivity Check
+**Before taking any action**, verify the Countly Test MCP server is reachable:
+1. Call a lightweight read-only tool (e.g., list applications or fetch server info) as a probe.
+2. If the call fails or returns an error, immediately stop and report: *"Countly test MCP server is unavailable. Cannot proceed."*
+3. Only proceed with the user's request after a successful probe response.
 
 ## Best Practices
 - Use to verify analytics instrumentation before production releases
-- Compare event structures with production (`#countly-prd`) to catch discrepancies
 - Use for QA and testing analytics workflows
 - Never mix with `#countly-prd` in the same request
 

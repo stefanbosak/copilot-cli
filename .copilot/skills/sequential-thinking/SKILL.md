@@ -50,10 +50,13 @@ Include `#st` tag in your prompt to activate this skill.
 ```
 
 ## Configuration
-MCP server is defined as `sequentialthinking` in `mcp-config.json`.
+MCP server is configured in the `.copilot/mcp-config.json`.
 
 ## Environment Variables
 None required. This is a built-in reasoning tool with no external service dependency.
+
+## Connectivity Check
+This skill uses a built-in reasoning tool with **no external MCP service dependency**. No connectivity check is required before use.
 
 ## Best Practices
 - Use for complex, multi-step problems where linear reasoning may miss edge cases

@@ -60,10 +60,18 @@ Include `#countly-prd` tag in your prompt to activate this skill.
 ```
 
 ## Configuration
-MCP server is defined as `countly-prd` in `mcp-config.json`.
+Do NOT search the filesystem for `mcp-config.json` or similar files directly.
+Do NOT read `~/.copilot/mcp-config.json` directly — always route through custom agent file.
+MCP server is configured in the `countly-prd.agent.md` custom agent file.
 
 ## Environment Variables
-Use environment variables defined in `.env`.
+Use environment variables defined in `.copilot/.env`.
+
+## Connectivity Check
+**Before taking any action**, verify the Countly Production MCP server is reachable:
+1. Call a lightweight read-only tool (e.g., list applications or fetch server info) as a probe.
+2. If the call fails or returns an error, immediately stop and report: *"Countly production MCP server is unavailable. Cannot proceed."*
+3. Only proceed with the user's request after a successful probe response.
 
 ## Best Practices
 - Use for production analytics and user behavior analysis

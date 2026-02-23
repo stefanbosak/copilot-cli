@@ -54,10 +54,16 @@ Include `#ref` tag in your prompt to activate this skill.
 ```
 
 ## Configuration
-MCP server is defined as `ref` in `mcp-config.json`.
+MCP server is configured in the `.copilot/mcp-config.json`.
 
 ## Environment Variables
-Use environment variables defined in `.env`.
+Use environment variables defined in `.copilot/.env`.
+
+## Connectivity Check
+**Before taking any action**, verify the documentation search (ref) MCP server is reachable:
+1. Call `ref_search_documentation` with a short minimal query as a probe.
+2. If the call fails or returns an error, immediately stop and report: *"Documentation search MCP server is unavailable. Cannot proceed."*
+3. Only proceed with the user's request after a successful probe response.
 
 ## Best Practices
 - Use before providing framework-specific or library-specific code

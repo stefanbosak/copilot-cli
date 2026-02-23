@@ -1,24 +1,5 @@
 {
   "mcpServers": {
-    "postgres": {
-      "tools": [
-        "*"
-      ],
-      "type": "local",
-      "command": "/usr/local/bin/toolbox",
-      "args": [
-       "--stdio",
-        "--tools-file",
-        "/usr/local/bin/tools.yaml"
-      ],
-      "env": {
-        "POSTGRES_HOST": "${POSTGRES_HOST}",
-        "POSTGRES_PORT": "${POSTGRES_PORT}",
-        "POSTGRES_DATABASE": "${POSTGRES_DATABASE}",
-        "POSTGRES_USER": "${POSTGRES_USER}",
-        "POSTGRES_PASSWORD": "${POSTGRES_PASSWORD}"
-      }
-    },
     "sequentialthinking": {
       "tools": [
         "*"
@@ -70,47 +51,6 @@
         "LOCAL_TIMEZONE",
         "mcp/time"
       ]
-    },
-    "grafana-tst": {
-      "tools": [
-        "*"
-      ],
-      "type": "sse",
-      "url": "https://grafana-mcp.tst.domain.tld/sse"
-    },
-    "grafana-prd": {
-      "tools": [
-        "*"
-      ],
-      "type": "sse",
-      "url": "https://grafana-mcp.prd.domain.tld/sse"
-    },
-    "graylog-tst": {
-      "tools": [
-        "*"
-      ],
-      "type": "http",
-      "url": "https://graylog.tst.domain.tld/api/mcp",
-      "headers": {
-        "Authorization": "Basic <BASE64_TOKEN>"
-      }
-    },
-    "graylog-prd": {
-      "tools": [
-        "*"
-      ],
-      "type": "http",
-      "url": "https://graylog.papayapos.sk/api/mcp",
-      "headers": {
-        "Authorization": "Basic <BASE64_TOKEN>"
-      }
-    },
-    "jira": {
-      "tools": [
-        "*"
-      ],
-      "type": "sse",
-      "url": "https://jira.domain.tld/sse"
     }
   }
 }

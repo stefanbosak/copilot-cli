@@ -41,10 +41,16 @@ Include `#time` tag in your prompt to activate this skill.
 ```
 
 ## Configuration
-MCP server is defined as `time` in `mcp-config.json`.
+MCP server is configured in the `.copilot/mcp-config.json`.
 
 ## Environment variables
-Use environment variables defined in `.env`.
+Use environment variables defined in `.copilot/.env`.
+
+## Connectivity Check
+**Before taking any action**, verify the time conversion MCP server is reachable:
+1. Call `get_current_time` with timezone `UTC` as a lightweight probe.
+2. If the call fails or returns an error, immediately stop and report: *"Time conversion MCP server is unavailable. Cannot proceed."*
+3. Only proceed with the user's request after a successful probe response.
 
 ## Best Practices
 - Use IANA timezone names (e.g., `Europe/Bratislava`, `America/New_York`, `Asia/Tokyo`)

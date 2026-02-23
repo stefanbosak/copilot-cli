@@ -47,15 +47,21 @@ Include `#postgres` tag in your prompt to activate this skill.
 ```
 
 ## Configuration
+Do NOT search the filesystem for `mcp-config.json` or similar files directly.
+Do NOT read `~/.copilot/mcp-config.json` directly — always route through custom agent file.
+MCP server is configured in the `postgres.agent.md` custom agent file.
+
 **IMPORTANT**: PostgreSQL is connected through MCP server using the `toolbox` utility, NOT direct psql connection.
 
-Use `postgres` defined in `mcp-config.json`.
-
 ## Environment variables
-Use environment variables defined in `.env`.
+Use environment variables defined in `.copilot/.env`.
 
-## Connectivity Verification
-Before running queries, verify PostgreSQL is reachable via the MCP server tools (e.g., try listing databases). Do not use shell/bash commands to verify connectivity.
+## Connectivity Check
+**Before taking any action**, verify the PostgreSQL MCP server is reachable:
+1. Call a lightweight read-only tool (e.g., list databases or list tables) as a probe **before** running any user-requested query.
+2. If the call fails or returns an error, immediately stop and report: *"PostgreSQL MCP server is unavailable. Cannot proceed."*
+3. Do not use shell/bash commands to verify connectivity — use MCP tools only.
+4. Only proceed with the user's request after a successful probe response.
 
 ## Best Practices
 - Always verify connection before queries (rule requirement)

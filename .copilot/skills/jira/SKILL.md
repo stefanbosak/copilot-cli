@@ -77,10 +77,18 @@ Common JQL patterns:
 - `parent = PROJ-123` (issues in an epic)
 
 ## Configuration
-MCP server is defined as `jira` in `mcp-config.json`.
+Do NOT search the filesystem for `mcp-config.json` or similar files directly.
+Do NOT read `~/.copilot/mcp-config.json` directly — always route through custom agent file.
+MCP server is configured in the `jira.agent.md` custom agent file.
 
 ## Environment Variables
-Use environment variables defined in `.env`.
+Use environment variables defined in `.copilot/.env`.
+
+## Connectivity Check
+**Before taking any action**, verify the Jira MCP server is reachable:
+1. Call `jira_get_all_projects` (lightweight read) as a probe.
+2. If the call fails or returns an error, immediately stop and report: *"Jira MCP server is unavailable. Cannot proceed."*
+3. Only proceed with the user's request after a successful probe response.
 
 ## Best Practices
 - Use JQL for precise searches across large projects

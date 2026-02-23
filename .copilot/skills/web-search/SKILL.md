@@ -54,10 +54,16 @@ Include `#fetch` tag in your prompt to activate this skill.
 ```
 
 ## Configuration
-MCP server is defined as `fetch` in `mcp-config.json`.
+MCP server is configured in the `.copilot/mcp-config.json`.
 
 ## Environment Variables
-Use environment variables defined in `.env`.
+Use environment variables defined in `.copilot/.env`.
+
+## Connectivity Check
+**Before taking any action**, verify internet connectivity and the web search MCP server is reachable:
+1. The first `web_search` call serves as an implicit connectivity probe.
+2. If the call returns a connectivity error or service unavailable response, immediately stop and report: *"Web search MCP server is unavailable or no internet connectivity. Cannot proceed."*
+3. Only proceed with further requests after the initial call succeeds.
 
 ## Best Practices
 - Use whenever the answer may depend on information newer than training data

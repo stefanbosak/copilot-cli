@@ -58,34 +58,18 @@ This repository provides a fully <span style="color: #0969da;">**containerized**
 
 ## 🔌 MCP Servers
 
-### <span style="color: #0969da;">🗄️ Database & Storage</span>
-
-#### **postgres** - <span style="color: #0969da;">PostgreSQL Integration</span>
-- **Type:** <span style="color: #1a7f37;">Local</span>
-- **Command:** `/usr/local/bin/toolbox --prebuilt postgres --stdio`
-- **Environment:**
-  - `POSTGRES_HOST`
-  - `POSTGRES_PORT`
-  - `POSTGRES_DATABASE`
-  - `POSTGRES_USER`
-  - `POSTGRES_PASSWORD`
-- **Documentation:** [MCP Toolbox for Databases](https://github.com/googleapis/genai-toolbox)
-- ⚠️ **Note:** <span style="color: #d73a49;">ARM64 architecture not currently supported</span>
-
----
+> [!NOTE]
+> Use custom agents with agent isolation to configure on-demand MCP servers.
 
 ### <span style="color: #8250df;">🧠 AI & Reasoning</span>
 
 #### **sequentialthinking** - <span style="color: #8250df;">Step-by-Step Reasoning</span>
-- **Type:** <span style="color: #1a7f37;">Local</span>
-- **Command:** `/usr/local/bin/mcp-server-sequential-thinking`
+- [configuration](.copilot/mcp-config.json)
 - **Benefits:** <span style="color: #1a7f37;">Reduces token consumption by 5-55%</span>
 - **Documentation:** [Sequential Thinking MCP Server](https://github.com/modelcontextprotocol/servers/tree/main/src/sequentialthinking)
 
 #### **ref** - <span style="color: #8250df;">Documentation Search</span>
-- **Type:** <span style="color: #0969da;">HTTP</span>
-- **URL:** `https://api.ref.tools/mcp`
-- **Authentication:** <span style="color: #d73a49;">Requires `REF_API_KEY`</span>
+- [configuration](.copilot/mcp-config.json)
 - **Benefits:** <span style="color: #1a7f37;">Essential for efficient context retrieval</span>
 - **Documentation:** [Ref.tools](https://ref.tools/)
 
@@ -94,38 +78,41 @@ This repository provides a fully <span style="color: #0969da;">**containerized**
 ### <span style="color: #1a7f37;">🌐 Utilities</span>
 
 #### **fetch** - <span style="color: #1a7f37;">Web Fetching</span>
-- **Type:** <span style="color: #1a7f37;">Local (Docker)</span>
-- **Command:** `docker run --rm -i --network=host mcp/fetch`
+- [configuration](.copilot/mcp-config.json)
 - **Documentation:** [Fetch MCP Server](https://github.com/modelcontextprotocol/servers/tree/main/src/fetch)
 
 #### **time** - <span style="color: #1a7f37;">Time & Timezone</span>
-- **Type:** <span style="color: #1a7f37;">Local (Docker)</span>
-- **Command:** `docker run --rm -i --network=host -e LOCAL_TIMEZONE mcp/time`
+- [configuration](.copilot/mcp-config.json)
 - **Documentation:** [Time MCP Server](https://github.com/modelcontextprotocol/servers/tree/main/src/time)
+
+---
+
+### <span style="color: #0969da;">🗄️ Database & Storage</span>
+
+#### **postgres** - <span style="color: #0969da;">PostgreSQL Integration</span>
+- [configuration](.copilot/agents/postgres.agent.md)
+- **Documentation:** [MCP Toolbox for Databases](https://github.com/googleapis/genai-toolbox)
+- ⚠️ **Note:** <span style="color: #d73a49;">ARM64 architecture not currently supported</span>
 
 ---
 
 ### <span style="color: #d73a49;">📊 Monitoring & Logging</span>
 
 #### **grafana-tst** - <span style="color: #d73a49;">Grafana</span> <span style="color: #8250df;">(Test)</span>
-- **Type:** <span style="color: #0969da;">SSE</span>
-- **URL:** `https://grafana-mcp.tst.domain.tld/sse`
+- [configuration](.copilot/agents/grafana-tst.agent.md)
 - **Documentation:** [Grafana MCP Server](https://github.com/grafana/mcp-grafana)
 
 #### **grafana-prd** - <span style="color: #d73a49;">Grafana</span> <span style="color: #1a7f37;">(Production)</span>
-- **Type:** <span style="color: #0969da;">SSE</span>
-- **URL:** `https://grafana-mcp.prd.domain.tld/sse`
+- [configuration](.copilot/agents/grafana-prd.agent.md)
 - **Documentation:** [Grafana MCP Server](https://github.com/grafana/mcp-grafana)
 
 #### **graylog-tst** - <span style="color: #d73a49;">Graylog</span> <span style="color: #8250df;">(Test)</span>
-- **Type:** <span style="color: #0969da;">HTTP</span>
-- **URL:** `https://graylog.tst.domain.tld/api/mcp`
+- [configuration](.copilot/agents/graylog-tst.agent.md)
 - **Authentication:** <span style="color: #d73a49;">Authorization header required</span>
 - **Documentation:** [Graylog MCP Documentation](https://go2docs.graylog.org/current/setting_up_graylog/model_context_protocol__mcp__tools.htm)
 
 #### **graylog-prd** - <span style="color: #d73a49;">Graylog</span> <span style="color: #1a7f37;">(Production)</span>
-- **Type:** <span style="color: #0969da;">HTTP</span>
-- **URL:** `https://graylog.papayapos.sk/api/mcp`
+- [configuration](.copilot/agents/graylog-prd.agent.md)
 - **Authentication:** <span style="color: #d73a49;">Authorization header required</span>
 - **Documentation:** [Graylog MCP Documentation](https://go2docs.graylog.org/current/setting_up_graylog/model_context_protocol__mcp__tools.htm)
 

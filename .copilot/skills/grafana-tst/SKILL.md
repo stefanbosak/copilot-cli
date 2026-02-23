@@ -92,10 +92,18 @@ Include `#grafana-tst` tag in your prompt to activate this skill.
 ```
 
 ## Configuration
-MCP server is defined as `grafana-tst` in `mcp-config.json`.
+Do NOT search the filesystem for `mcp-config.json` or similar files directly.
+Do NOT read `~/.copilot/mcp-config.json` directly — always route through custom agent file.
+MCP server is configured in the `grafana-tst.agent.md` custom agent file.
 
 ## Environment Variables
-Use environment variables defined in `.env`.
+Use environment variables defined in `.copilot/.env`.
+
+## Connectivity Check
+**Before taking any action**, verify the Grafana Test MCP server is reachable:
+1. Call `list_datasources` (with `limit=1`) as a lightweight probe.
+2. If the call fails or returns an error, immediately stop and report: *"Grafana test MCP server is unavailable. Cannot proceed."*
+3. Only proceed with the user's request after a successful probe response.
 
 ## Best Practices
 - Use `list_datasources` first to find correct datasource UIDs before querying
