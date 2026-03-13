@@ -29,8 +29,9 @@ This repository provides a fully <span style="color: #0969da;">**containerized**
 - 📖 [AI models database](https://models.dev)
 - 🤖 [Supported AI Models](https://docs.github.com/en/copilot/reference/ai-models/supported-models#model-retirement-history)
   - **Recommended models**:
-    - <span style="color: #8250df;">**Claude Sonnet-4.5**</span> - [Documentation](https://www.anthropic.com/claude/sonnet)
-    - <span style="color: #a371f7;">**Claude Opus-4.6**</span> - [Documentation](https://www.anthropic.com/claude/opus) (normal, fast)
+    - <span style="color: #8250df;">**Anthropic Claude Sonnet**</span> - [Documentation](https://www.anthropic.com/claude/sonnet): Low, Medium, High
+    - <span style="color: #a371f7;">**Anthripic Claude Opus**</span> - [Documentation](https://www.anthropic.com/claude/opus): Normal (Low, Medium, High), Fast (Low, Medium, High)
+    - <span style="color: #a371f7;">**OpenAI GPT 5.4**</span> - [Documentation](https://openai.com/index/introducing-gpt-5-4/): Low, Medium, High, Extra High
   - **Effective Prompting**:
     - Save output to prevent data loss (reduce costs)
     - Iteratively processing excessively long messages (drop error rate ~<10%)
