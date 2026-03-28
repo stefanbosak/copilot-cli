@@ -16,8 +16,8 @@ export CWD="$(basename $(dirname $(realpath "${0}")))"
 export TARGETPLATFORM=${TARGETPLATFORM:-"${TARGETOS}/${TARGETARCH}"}
 
 # container user and group
-export CONTAINER_USER=${CONTAINER_USER:-"user"}
-export CONTAINER_GROUP=${CONTAINER_GROUP:-"user"}
+export CONTAINER_USER=${CONTAINER_USER:-"${USER}"}
+export CONTAINER_GROUP=${CONTAINER_GROUP:-"${USER}"}
 
 # container user ID and group ID
 export CONTAINER_USER_ID=${CONTAINER_USER_ID:-$(id -u)}

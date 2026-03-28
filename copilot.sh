@@ -7,13 +7,16 @@
 # Docker container GitHub Copilot CLI wrapper
 #
 copilot() {
+  # extract repository name
+  export CWD="$(basename $(dirname $(realpath "${0}")))"
+
   # extract Docker GID from the system
   export DOCKER_GID=$(getent group docker | cut -d: -f3)
 
   # construct container image string
   export CONTAINER_IMAGE_REGISTRY="ghcr.io" # docker.io
   export CONTAINER_IMAGE_NAMESPACE="stefanbosak" # developmententity
-  export CONTAINER_IMAGE_NAME="copilot-cli"
+  export CONTAINER_IMAGE_NAME="${CWD}"
   export CONTAINER_IMAGE_TAG="initial"
   export CONTAINER_IMAGE="${CONTAINER_IMAGE_REGISTRY}/${CONTAINER_IMAGE_NAMESPACE}/${CONTAINER_IMAGE_NAME}:${CONTAINER_IMAGE_TAG}"
 
@@ -43,10 +46,10 @@ copilot() {
     --group-add "${DOCKER_GID}" \
     --env-file "${HOME}/.copilot/.env" \
     -v /var/run/docker.sock:/var/run/docker.sock \
-    -v "${HOME}/.copilot:/home/user/.copilot" \
+    -v "${HOME}/.copilot:/home/${USER}/.copilot" \
     -v "${HOME}/workspace:/workspace" \
-    -v "${HOME}/.docker:/home/user/.docker:ro" \
-    -v "${HOME}/.docker/mcp:/home/user/.docker/mcp" \
+    -v "${HOME}/.docker:/home/${USER}/.docker:ro" \
+    -v "${HOME}/.docker/mcp:/home/${USER}/.docker/mcp" \
     -w "/workspace" \
     "${CONTAINER_IMAGE}" \
     copilot --no-auto-update --allow-all-tools --allow-all-urls --silent "$@"
