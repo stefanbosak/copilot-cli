@@ -1,0 +1,18 @@
+#!/bin/bash
+
+# start Docker build
+export DOCKER_BUILDKIT_ATTESTATIONS=0
+
+# default target OS, architecture and platforms
+export TARGETOS=${TARGETOS:-linux}
+
+if [ -f "/etc/debian_version" ]; then
+  export TARGETARCH=${TARGETARCH:-$(dpkg --print-architecture)}
+else
+  export TARGETARCH=${TARGETARCH:-"amd64"}
+fi
+
+export CWD="$(basename $(dirname $(realpath "${0}")))"
+export TARGETPLATFORM=${TARGETPLATFORM:-"${TARGETOS}/${TARGETARCH}"}
+
+docker buildx build --network=host --provenance=false --sbom=false --no-cache --platform "${TARGETPLATFORM}" -t "localhost/${CWD}:initial" .
