@@ -60,7 +60,7 @@ COPY "./tools.yaml" "/usr/local/bin/tools.yaml"
 
 RUN if ! getent passwd ${CONTAINER_USER_ID} > /dev/null 2>&1; then \
         groupadd --gid ${CONTAINER_GROUP_ID} "${CONTAINER_GROUP}" && \
-        useradd --gid ${CONTAINER_GROUP_ID} -M -d "${WORKSPACE_ROOT_DIR}" --uid ${CONTAINER_USER_ID} "${CONTAINER_USER}" -s "/bin/bash" && \
+        useradd --gid ${CONTAINER_GROUP_ID} --groups "${CONTAINER_USER}" -M -d "${WORKSPACE_ROOT_DIR}" --uid ${CONTAINER_USER_ID} "${CONTAINER_USER}" -s "/bin/bash" && \
         chown -R "${CONTAINER_USER}:${CONTAINER_GROUP}" "${WORKSPACE_ROOT_DIR}"; \
     else \
         rm -fr "/home/${CONTAINER_USER}" && \
