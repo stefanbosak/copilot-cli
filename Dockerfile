@@ -20,10 +20,7 @@ WORKDIR "${WORKSPACE_ROOT_DIR}"
 
 # OCI Standard Labels
 # https://github.com/opencontainers/image-spec/blob/main/annotations.md
-LABEL org.opencontainers.image.authors="stefanbosak" \
-      org.opencontainers.image.description="GitHub Copilot CLI and tooling" \
-      org.opencontainers.image.url="https://github.com/stefanbosak/copilot-cli" \
-      org.opencontainers.image.source="https://github.com/stefanbosak/copilot-cli"
+LABEL org.opencontainers.image.description="GitHub Copilot CLI container and tooling"
 
 RUN apt-get update \
   && apt-get install -y --no-install-recommends \
@@ -60,10 +57,10 @@ COPY "./tools.yaml" "/usr/local/bin/tools.yaml"
 
 RUN if ! getent passwd ${CONTAINER_USER_ID} > /dev/null 2>&1; then \
         groupadd --gid ${CONTAINER_GROUP_ID} "${CONTAINER_GROUP}" && \
-        useradd --gid ${CONTAINER_GROUP_ID} --groups "${CONTAINER_USER}" -M -d "${WORKSPACE_ROOT_DIR}" --uid ${CONTAINER_USER_ID} "${CONTAINER_USER}" -s "/bin/bash" && \
+        useradd --gid ${CONTAINER_GROUP_ID} --groups "${CONTAINER_GROUP}" -M -d "${WORKSPACE_ROOT_DIR}" --uid ${CONTAINER_USER_ID} "${CONTAINER_USER}" -s "/bin/bash" && \
         chown -R "${CONTAINER_USER}:${CONTAINER_GROUP}" "${WORKSPACE_ROOT_DIR}"; \
     else \
-        rm -fr "/home/${CONTAINER_USER}" && \
+        rm -fr "${WORKSPACE_ROOT_DIR}" && \
         mkdir -p "${WORKSPACE_ROOT_DIR}" && \
         usermod -d "${WORKSPACE_ROOT_DIR}" -c "${CONTAINER_USER}" "debian" && \
         groupmod -n "${CONTAINER_USER}" "debian" && \
