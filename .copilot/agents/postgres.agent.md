@@ -14,7 +14,7 @@ mcp-servers:
     command: /usr/local/bin/toolbox
     args:
       - --stdio
-      - --tools-file
+      - --config
       - /usr/local/bin/tools.yaml
     env:
       POSTGRES_HOST: "${POSTGRES_HOST}"
