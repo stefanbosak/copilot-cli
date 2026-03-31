@@ -1,0 +1,69 @@
+{
+  "mcpServers": {
+    "ref": {
+      "tools": [
+        "*"
+      ],
+      "type": "http",
+      "url": "https://api.ref.tools/mcp",
+      "headers": {
+        "x-ref-api-key": "${REF_API_KEY}"
+      }
+    },
+    "sequentialthinking": {
+      "tools": [
+        "*"
+      ],
+      "type": "local",
+      "command": "docker",
+      "args": [
+        "run",
+        "--quiet",
+        "--rm",
+        "--cpus=2",
+        "--memory=256M",
+        "-i",
+        "--network=host",
+        "docker.io/mcp/sequentialthinking"
+      ]
+    },
+    "fetch": {
+      "tools": [
+        "*"
+      ],
+      "type": "local",
+      "command": "docker",
+      "args": [
+        "run",
+        "--rm",
+        "--quiet",
+        "--pull=always",
+        "--cpus=2",
+        "--memory=256M",
+        "-i",
+        "--network=host",
+        "dhi.io/fetch-mcp"
+      ]
+    },
+    "time": {
+      "tools": [
+        "*"
+      ],
+      "type": "local",
+      "command": "docker",
+      "args": [
+        "run",
+        "--quiet",
+        "--rm",
+        "--pull=always",
+        "--cpus=2",
+        "--memory=256M",
+        "-i",
+        "--network=host",
+        "-e",
+        "LOCAL_TIMEZONE",
+        "dhi.io/time-mcp"
+      ]
+    }
+  }
+}
