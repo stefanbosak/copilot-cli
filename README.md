@@ -13,6 +13,18 @@
 
 ---
 
+## 📦 Latest Build
+
+<!-- VERSION_INFO_START -->
+| Component | Version |
+|-----------|---------|
+| **GitHub Copilot CLI** | `1.0.15-2` |
+
+> 🔄 Last updated: 2026-04-01T15:35:38Z · [Build #68](https://github.com/stefanbosak/copilot-cli/actions/runs/23856749066)
+<!-- VERSION_INFO_END -->
+
+---
+
 ## 📋 Overview
 
 This repository provides a fully automated preparation of <span style="color: #0969da;">**containerized**</span> [GitHub Copilot CLI](https://github.com/github/copilot-cli) environment with integrated <span style="color: #8250df;">**MCP server**</span> support using <span style="color: #1a7f37;">**Docker-in-Docker**</span> architecture.
