@@ -416,7 +416,7 @@ jobs:
               "<!-- VERSION_INFO_START -->\n"
               "| Component | Version |\n"
               "|-----------|---------|\n"
-              f"| **GitHub Copilot CLI** | `{copilot_version}` |\n"
+              f"| **GitHub Copilot CLI** | [`{copilot_version}`](https://github.com/github/copilot-cli/releases/tag/v{copilot_version}) |\n"
               "\n"
               f"> 🔄 Last updated: {updated_at} · [Build #{run_number}]({run_url})\n"
               "<!-- VERSION_INFO_END -->"
