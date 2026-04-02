@@ -169,7 +169,7 @@ This repository provides a fully automated preparation of <span style="color: #0
 | [`act.sh`](./act.sh) | <span style="color: #1a7f37;">[Act](https://github.com/nektos/act) tool wrapper script</span> |
 | [`docker-image-native-multiplatform-pipeline.yml`](.github/workflows/docker-image-native-multiplatform-pipeline.yml) | <span style="color: #1a7f37;">GitHub Action pipeline workflow for native build (triggered on repository_dispatch)</span> |
 | [`docker-image-emulated-multiplatform-pipeline.yml`](.github/workflows/docker-image-emulated-multiplatform-pipeline.yml) | <span style="color: #1a7f37;">GitHub Action pipeline workflow for emulated (QEMU ARM64) build</span> |
-| [`monitor-copilot-cli-prerelease.yml`](.github/workflows/monitor-copilot-cli-prerelease.yml) | <span style="color: #1a7f37;"> GitHub Action workflow for monitoring of newest GitHub Copilot CLI pre-release version</span> |
+| [`monitor-prerelease.yml`](.github/workflows/monitor-prerelease.yml) | <span style="color: #1a7f37;"> GitHub Action workflow for monitoring of newest GitHub Copilot CLI pre-release version</span> |
 
 ## 🐳 Container Images
 
