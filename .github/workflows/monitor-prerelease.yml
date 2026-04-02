@@ -1,4 +1,4 @@
-name: 'Monitor GitHub Copilot Pre-Release'
+name: 'Monitor Pre-Release'
 
 on:
   schedule:
