@@ -92,6 +92,8 @@ jobs:
       - name: 'Cleanup ${{ env.GH_REGISTRY }} registry'
         if: steps.pkg-check.outputs.count != '0'
         uses: actions/delete-package-versions@main
+        env:
+          ACTIONS_ALLOW_USE_UNSECURE_NODE_VERSION: true
         with:
           owner: ${{ github.repository_owner }}
           package-name: ${{ env.REPOSITORY_NAME }}
