@@ -104,6 +104,9 @@ RUN if getent group "${CONTAINER_GROUP_ID}" > /dev/null; then \
       | BUN_INSTALL=/usr/local bash \
   # Install mdflow
   && BUN_INSTALL=/usr/local bun install --global mdflow \
+  # Install fabric
+  && curl -fsSL "https://raw.githubusercontent.com/danielmiessler/fabric/main/scripts/installer/install.sh" \
+     | INSTALL_DIR=/usr/local/bin bash \
   # Install Docker-in-Docker (pre-release)
   # Note: DinD via QEMU on ARM64 not supported
   # (ARM64 requires ARM64 kernel from host, not available on AMD64 host)
