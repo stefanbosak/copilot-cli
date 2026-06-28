@@ -73,7 +73,7 @@ This repository provides a fully automated preparation of <span style="color: #0
 ## 🛠️ Utilities
 - [uv](https://github.com/astral-sh/uv) - An extremely fast Python package installer and resolver
 - [bun](https://github.com/oven-sh/bun) - All-in-one JavaScript runtime and toolkit for faster development
-- [fabric](https://githu.com/danielmiessler/fabric) - Framework for augmenting humans using AI
+- [fabric](https://github.com/danielmiessler/fabric) - Framework for augmenting humans using AI
 - [mdflow](https://github.com/johnlindquist/mdflow) - Markdown-based workflow automation tool for streamlined task execution
 
 ## 🔌 MCP Servers
