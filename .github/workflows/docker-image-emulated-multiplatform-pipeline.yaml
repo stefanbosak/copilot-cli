@@ -12,7 +12,7 @@ on:
         description: 'COPILOT_CLI_VERSION'
         required: false
         type: string
-        default: '1.0.71'
+        default: '1.0.72-0'
       CONTAINER_TAG:
         description: 'CONTAINER_TAG (text)'
         required: false
