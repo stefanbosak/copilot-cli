@@ -17,9 +17,9 @@
 <!-- VERSION_INFO_START -->
 | Component | Version |
 |-----------|---------|
-| **GitHub Copilot CLI** | [`1.0.74-1`](https://github.com/github/copilot-cli/releases/tag/v1.0.74-1) |
+| **GitHub Copilot CLI** | [`1.0.74-2`](https://github.com/github/copilot-cli/releases/tag/v1.0.74-2) |
 
-> 🔄 Last updated: 2026-07-22T16:55:16Z · [Build #105](https://github.com/stefanbosak/copilot-cli/actions/runs/29939799302)
+> 🔄 Last updated: 2026-07-22T20:46:16Z · [Build #106](https://github.com/stefanbosak/copilot-cli/actions/runs/29956209092)
 <!-- VERSION_INFO_END -->
 
 ---
